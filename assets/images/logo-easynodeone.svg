@@ -1,0 +1,214 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="EasyNodeOne">
+  <defs>
+    <!-- Gradiente hexágono -->
+    <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1d4ed8"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+
+    <!-- Glow filtro -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-strong" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Colores nodos -->
+    <!-- azul, verde, morado, amber, pink, cyan -->
+  </defs>
+
+  <!-- Fondo -->
+  <rect width="400" height="400" fill="#04081a" rx="32"/>
+
+  <!-- Glow central -->
+  <circle cx="200" cy="200" r="80" fill="rgba(37,99,235,0.18)" filter="url(#glow-strong)">
+    <animate attributeName="r" values="75;95;75" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- ===== ÓRBITAS (elipses inclinadas) ===== -->
+
+  <!-- Órbita 1 - azul - tilt 16° -->
+  <ellipse cx="200" cy="200" rx="148" ry="59" fill="none" stroke="rgba(59,130,246,0.12)" stroke-width="0.8"
+    transform="rotate(16, 200, 200)"/>
+  <!-- Órbita 2 - verde - tilt -30° -->
+  <ellipse cx="200" cy="200" rx="168" ry="67" fill="none" stroke="rgba(16,185,129,0.12)" stroke-width="0.8"
+    transform="rotate(-30, 200, 200)"/>
+  <!-- Órbita 3 - morado - tilt 41° -->
+  <ellipse cx="200" cy="200" rx="133" ry="53" fill="none" stroke="rgba(139,92,246,0.12)" stroke-width="0.8"
+    transform="rotate(41, 200, 200)"/>
+  <!-- Órbita 4 - amber - tilt -13° -->
+  <ellipse cx="200" cy="200" rx="182" ry="73" fill="none" stroke="rgba(245,158,11,0.12)" stroke-width="0.8"
+    transform="rotate(-13, 200, 200)"/>
+  <!-- Órbita 5 - pink - tilt 53° -->
+  <ellipse cx="200" cy="200" rx="155" ry="62" fill="none" stroke="rgba(236,72,153,0.12)" stroke-width="0.8"
+    transform="rotate(53, 200, 200)"/>
+  <!-- Órbita 6 - cyan - tilt -45° -->
+  <ellipse cx="200" cy="200" rx="172" ry="69" fill="none" stroke="rgba(6,182,212,0.12)" stroke-width="0.8"
+    transform="rotate(-45, 200, 200)"/>
+
+  <!-- ===== NODO 1 - Azul - Órbita 1 ===== -->
+  <g filter="url(#glow)">
+    <circle r="7" fill="#3b82f6">
+      <animateMotion dur="9s" repeatCount="indefinite">
+        <mpath href="#orbit1"/>
+      </animateMotion>
+    </circle>
+  </g>
+  <!-- Halo nodo 1 -->
+  <circle r="14" fill="rgba(59,130,246,0.18)">
+    <animateMotion dur="9s" repeatCount="indefinite">
+      <mpath href="#orbit1"/>
+    </animateMotion>
+  </circle>
+
+  <!-- ===== NODO 2 - Verde - Órbita 2 ===== -->
+  <g filter="url(#glow)">
+    <circle r="7" fill="#10b981">
+      <animateMotion dur="11s" repeatCount="indefinite" begin="-3.7s">
+        <mpath href="#orbit2"/>
+      </animateMotion>
+    </circle>
+  </g>
+  <circle r="14" fill="rgba(16,185,129,0.18)">
+    <animateMotion dur="11s" repeatCount="indefinite" begin="-3.7s">
+      <mpath href="#orbit2"/>
+    </animateMotion>
+  </circle>
+
+  <!-- ===== NODO 3 - Morado - Órbita 3 ===== -->
+  <g filter="url(#glow)">
+    <circle r="7" fill="#8b5cf6">
+      <animateMotion dur="8s" repeatCount="indefinite" begin="-1.5s">
+        <mpath href="#orbit3"/>
+      </animateMotion>
+    </circle>
+  </g>
+  <circle r="14" fill="rgba(139,92,246,0.18)">
+    <animateMotion dur="8s" repeatCount="indefinite" begin="-1.5s">
+      <mpath href="#orbit3"/>
+    </animateMotion>
+  </circle>
+
+  <!-- ===== NODO 4 - Amber - Órbita 4 ===== -->
+  <g filter="url(#glow)">
+    <circle r="7" fill="#f59e0b">
+      <animateMotion dur="13s" repeatCount="indefinite" begin="-5s">
+        <mpath href="#orbit4"/>
+      </animateMotion>
+    </circle>
+  </g>
+  <circle r="14" fill="rgba(245,158,11,0.18)">
+    <animateMotion dur="13s" repeatCount="indefinite" begin="-5s">
+      <mpath href="#orbit4"/>
+    </animateMotion>
+  </circle>
+
+  <!-- ===== NODO 5 - Pink - Órbita 5 ===== -->
+  <g filter="url(#glow)">
+    <circle r="7" fill="#ec4899">
+      <animateMotion dur="7.5s" repeatCount="indefinite" begin="-2.2s">
+        <mpath href="#orbit5"/>
+      </animateMotion>
+    </circle>
+  </g>
+  <circle r="14" fill="rgba(236,72,153,0.18)">
+    <animateMotion dur="7.5s" repeatCount="indefinite" begin="-2.2s">
+      <mpath href="#orbit5"/>
+    </animateMotion>
+  </circle>
+
+  <!-- ===== NODO 6 - Cyan - Órbita 6 ===== -->
+  <g filter="url(#glow)">
+    <circle r="7" fill="#06b6d4">
+      <animateMotion dur="10s" repeatCount="indefinite" begin="-4.5s">
+        <mpath href="#orbit6"/>
+      </animateMotion>
+    </circle>
+  </g>
+  <circle r="14" fill="rgba(6,182,212,0.18)">
+    <animateMotion dur="10s" repeatCount="indefinite" begin="-4.5s">
+      <mpath href="#orbit6"/>
+    </animateMotion>
+  </circle>
+
+  <!-- ===== PATHS DE ÓRBITAS (usados por animateMotion) ===== -->
+  <defs>
+    <!-- Órbita 1: azul, tilt 16° -->
+    <path id="orbit1" d="
+      M 348,200
+      A 148,59 0 0 1 52,200
+      A 148,59 0 0 1 348,200
+    " transform="rotate(16, 200, 200)"/>
+
+    <!-- Órbita 2: verde, tilt -30° -->
+    <path id="orbit2" d="
+      M 368,200
+      A 168,67 0 0 1 32,200
+      A 168,67 0 0 1 368,200
+    " transform="rotate(-30, 200, 200)"/>
+
+    <!-- Órbita 3: morado, tilt 41° -->
+    <path id="orbit3" d="
+      M 333,200
+      A 133,53 0 0 1 67,200
+      A 133,53 0 0 1 333,200
+    " transform="rotate(41, 200, 200)"/>
+
+    <!-- Órbita 4: amber, tilt -13° -->
+    <path id="orbit4" d="
+      M 382,200
+      A 182,73 0 0 1 18,200
+      A 182,73 0 0 1 382,200
+    " transform="rotate(-13, 200, 200)"/>
+
+    <!-- Órbita 5: pink, tilt 53° -->
+    <path id="orbit5" d="
+      M 355,200
+      A 155,62 0 0 1 45,200
+      A 155,62 0 0 1 355,200
+    " transform="rotate(53, 200, 200)"/>
+
+    <!-- Órbita 6: cyan, tilt -45° -->
+    <path id="orbit6" d="
+      M 372,200
+      A 172,69 0 0 1 28,200
+      A 172,69 0 0 1 372,200
+    " transform="rotate(-45, 200, 200)"/>
+  </defs>
+
+  <!-- ===== HEXÁGONO CENTRAL ===== -->
+  <polygon points="200,158 232,176 232,212 200,230 168,212 168,176"
+    fill="url(#hg)"
+    stroke="rgba(96,165,250,0.5)" stroke-width="1.5"
+    filter="url(#glow)"/>
+
+  <!-- Letra N -->
+  <text x="200" y="213"
+    font-family="'Plus Jakarta Sans', Arial Black, sans-serif"
+    font-size="44" font-weight="800"
+    text-anchor="middle"
+    fill="white"
+    filter="url(#glow)">N
+    <animate attributeName="opacity" values="0.85;1;0.85" dur="3s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- ===== TEXTO MARCA (abajo) ===== -->
+  <text x="200" y="358"
+    font-family="'Plus Jakarta Sans', Arial Black, sans-serif"
+    font-size="18" font-weight="700"
+    text-anchor="middle"
+    fill="rgba(255,255,255,0.9)"
+    letter-spacing="-0.5">Easy<tspan fill="#3b82f6">Node</tspan>One</text>
+
+  <text x="200" y="376"
+    font-family="'Plus Jakarta Sans', Arial, sans-serif"
+    font-size="10" font-weight="400"
+    text-anchor="middle"
+    fill="rgba(255,255,255,0.3)"
+    letter-spacing="2">PLATAFORMA MODULAR</text>
+
+</svg>

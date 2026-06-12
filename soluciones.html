@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ERP EasyTech sobre Odoo: módulos, flujos y opciones de implementación con soporte local en Panamá.">
+  <title>ERP Odoo — EasyTech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/ramp-theme.css">
+</head>
+<body class="ramp page-soluciones">
+  <header class="site-header site-header--ramp">
+    <div class="site-header-inner">
+    <a href="index.html" class="logo logo--with-mark" aria-label="Easy Technology Services — Inicio">
+      <span class="logo-mark" aria-hidden="true">
+        <img src="assets/images/logo-easytech-services.png" alt="" width="120" height="48" class="logo-img" decoding="async" />
+      </span>
+      <span class="logo-text">EasyTech<span>.services</span></span>
+    </a>
+    <nav class="nav nav--ramp nav--ecosystem" aria-label="EasyTech Ecosystem">
+      <a href="index.html" class="nav-link nav-link--home" data-nav-match="index">Inicio</a>
+      <div class="nav-dropdown" data-dropdown>
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-controls="nav-dd-plataformas" aria-haspopup="true" id="nav-dd-plataformas-btn">
+          Plataformas
+          <svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown-panel nav-dropdown-panel--mega" id="nav-dd-plataformas" role="group" aria-labelledby="nav-dd-plataformas-btn">
+          <div class="mega-inner">
+            <p class="mega-label">Plataformas SaaS</p>
+            <div class="mega-grid mega-grid--platforms">
+              <a href="easynodeone.html" class="mega-link mega-link--featured" data-nav-match="easynodeone">
+                <span class="mega-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2"/></svg></span>
+                <span class="mega-link-body"><span class="mega-link-title">EasyNodeOne</span><span class="mega-link-desc">Membresías, eventos, citas y comunidades</span></span>
+              </a>
+              <a href="econverso.html" class="mega-link" data-nav-match="econverso">
+                <span class="mega-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+                <span class="mega-link-body"><span class="mega-link-title">Easy Converso</span><span class="mega-link-desc">Asistente inteligente para atención</span></span>
+              </a>
+              <a href="eclassone.html" class="mega-link" data-nav-match="eclassone">
+                <span class="mega-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+                <span class="mega-link-body"><span class="mega-link-title">EClassOne</span><span class="mega-link-desc">Campus virtual y gestión académica</span></span>
+              </a>
+              <a href="ethesisone.html" class="mega-link" data-nav-match="ethesisone">
+                <span class="mega-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+                <span class="mega-link-body"><span class="mega-link-title">EThesisOne</span><span class="mega-link-desc">Trabajos de grado e investigación</span></span>
+              </a>
+              <a href="eposone.html" class="mega-link" data-nav-match="eposone">
+                <span class="mega-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h4M6 12h8"/></svg></span>
+                <span class="mega-link-body"><span class="mega-link-title">EPOSOne</span><span class="mega-link-desc">Punto de venta para PYMES</span></span>
+              </a>
+              <a href="epayroll.html" class="mega-link" data-nav-match="epayroll">
+                <span class="mega-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></span>
+                <span class="mega-link-body"><span class="mega-link-title">EPayRoll</span><span class="mega-link-desc">Nómina y recursos humanos · Próximamente</span></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-dropdown" data-dropdown>
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-controls="nav-dd-soluciones" aria-haspopup="true" id="nav-dd-soluciones-btn">
+          Soluciones
+          <svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown-panel nav-dropdown-panel--mega nav-dropdown-panel--mega-narrow" id="nav-dd-soluciones" role="group" aria-labelledby="nav-dd-soluciones-btn">
+          <div class="mega-inner">
+            <p class="mega-label">Soluciones de negocio</p>
+            <div class="mega-grid mega-grid--two">
+              <a href="soluciones.html" class="mega-link" data-nav-match="soluciones">
+                <span class="mega-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span>
+                <span class="mega-link-body"><span class="mega-link-title">Easy Odoo</span><span class="mega-link-desc">ERP, inventario, ventas y contabilidad</span></span>
+              </a>
+              <a href="facturacion-electronica.html" class="mega-link" data-nav-match="facturacion-electronica">
+                <span class="mega-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+                <span class="mega-link-body"><span class="mega-link-title">Facturación Electrónica Panamá</span><span class="mega-link-desc">Cumplimiento DGI e integración ERP</span></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-dropdown" data-dropdown>
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-controls="nav-dd-servicios" aria-haspopup="true" id="nav-dd-servicios-btn">
+          Servicios Profesionales
+          <svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown-panel nav-dropdown-panel--mega nav-dropdown-panel--mega-narrow" id="nav-dd-servicios" role="group" aria-labelledby="nav-dd-servicios-btn">
+          <div class="mega-inner">
+            <p class="mega-label">Servicios profesionales</p>
+            <div class="mega-grid mega-grid--two">
+              <a href="desarrollo-software.html" class="mega-link" data-nav-match="desarrollo-software">
+                <span class="mega-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+                <span class="mega-link-body"><span class="mega-link-title">Desarrollo de Software</span><span class="mega-link-desc">Web, SaaS, APIs e integraciones</span></span>
+              </a>
+              <a href="consultoria-ti.html" class="mega-link" data-nav-match="consultoria-ti">
+                <span class="mega-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                <span class="mega-link-body"><span class="mega-link-title">Consultoría TI</span><span class="mega-link-desc">Transformación digital y gobierno TI</span></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-dropdown" data-dropdown>
+        <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-controls="nav-dd-contacto" aria-haspopup="true" id="nav-dd-contacto-btn">
+          Contacto
+          <svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown-panel nav-dropdown-panel--mega nav-dropdown-panel--mega-narrow" id="nav-dd-contacto" role="group" aria-labelledby="nav-dd-contacto-btn">
+          <div class="mega-inner">
+            <div class="mega-grid mega-grid--two">
+              <a href="agenda.html" class="mega-link" data-nav-match="agenda">
+                <span class="mega-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+                <span class="mega-link-body"><span class="mega-link-title">Agenda</span><span class="mega-link-desc">Reservá cita en línea</span></span>
+              </a>
+              <a href="contacto.html" class="mega-link" data-nav-match="contacto">
+                <span class="mega-link-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+                <span class="mega-link-body"><span class="mega-link-title">Hablar con el equipo</span><span class="mega-link-desc">WhatsApp, correo y registro</span></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="header-actions" aria-label="Accesos rápidos">
+      <a href="https://appprd.easynodeone.com/register" class="header-link" target="_blank" rel="noopener noreferrer" title="Crear cuenta en EasyNodeOne">Registrarse</a>
+      <a href="https://appprd.easynodeone.com/login" class="header-link" target="_blank" rel="noopener noreferrer" title="Iniciar sesión en EasyNodeOne">Entrar</a>
+      <a href="agenda.html" class="header-cta" data-nav-match="agenda">Agendar cita</a>
+    </div>
+    </div>
+  </header>
+
+  <main id="page-main" class="page-surface">
+    <section class="section section--tight" aria-label="Flyer Easy Odoo">
+      <figure class="product-flyer reveal">
+        <img src="assets/images/flyers/easy-odoo.png" alt="Flyer Easy Odoo — ERP EasyTech" width="1200" height="1697" loading="eager" decoding="async">
+      </figure>
+    </section>
+    <section id="producto-erp" class="section erp-options" aria-labelledby="erp-opciones-heading">
+      <h2 id="erp-opciones-heading" class="section-title reveal">Opciones de ERP EasyTech (Odoo)</h2>
+      <p class="pillars-lede reveal">Cada módulo del ERP se configura según tus flujos reales: implementamos por etapas, medimos adopción y optimizamos con datos.</p>
+      <p class="odoo-relation-note reveal" role="note">Somos <strong>consultores independientes</strong> sobre <strong>Odoo</strong>.</p>
+
+      <div class="erp-modules">
+        <article class="erp-module reveal">
+          <div class="erp-module-copy">
+            <p class="erp-module-kicker">Odoo · Módulo 1</p>
+            <h3>Ventas y CRM</h3>
+            <p>Gestiona prospectos, cotizaciones y pedidos en un solo flujo comercial. Tu equipo visualiza pipeline, actividades y cierre por etapa sin hojas sueltas.</p>
+            <ul>
+              <li>Embudo comercial y seguimiento de oportunidades</li>
+              <li>Cotizaciones y pedidos sincronizados con inventario</li>
+              <li>Trazabilidad por vendedor, cliente y estado</li>
+            </ul>
+          </div>
+          <figure class="erp-module-visual">
+            <img src="assets/images/demo-erp-odoo.png" alt="ERP Odoo: módulo de ventas y CRM" width="1200" height="750" loading="lazy" decoding="async" data-demo-img>
+          </figure>
+        </article>
+
+        <article class="erp-module erp-module--reverse reveal">
+          <div class="erp-module-copy">
+            <p class="erp-module-kicker">Odoo · Módulo 2</p>
+            <h3>Inventario y compras</h3>
+            <p>Controla existencias, recepciones y compras con reglas claras de reposición. El stock disponible se mantiene actualizado para ventas y operaciones.</p>
+            <ul>
+              <li>Visibilidad de entradas, salidas y disponibilidad real</li>
+              <li>Órdenes de compra conectadas al inventario</li>
+              <li>Reducción de quiebres y sobrecompras</li>
+            </ul>
+          </div>
+          <figure class="erp-module-visual">
+            <img src="assets/images/hero-odoo-tableros-metricas.png" alt="Odoo: módulo de inventario y compras" width="1440" height="900" loading="lazy" decoding="async" data-demo-img>
+          </figure>
+        </article>
+
+        <article class="erp-module reveal">
+          <div class="erp-module-copy">
+            <p class="erp-module-kicker">Odoo · Módulo 3</p>
+            <h3>Informes y tesorería</h3>
+            <p>Consolida indicadores financieros, pagos y control de caja para decisiones rápidas. Todo queda visible en reportes operativos y tableros de seguimiento.</p>
+            <ul>
+              <li>Cheques, pagos y movimientos con control por estado</li>
+              <li>Reportes para seguimiento operativo y financiero</li>
+              <li>Lectura rápida de desvíos y prioridades de caja</li>
+            </ul>
+          </div>
+          <figure class="erp-module-visual">
+            <img src="assets/images/demo-odoo-informes-tesoreria.png" alt="Odoo: módulo de informes y tesorería" width="1600" height="900" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/images/demo-odoo-informes-tesoreria.svg'">
+          </figure>
+        </article>
+
+        <article class="erp-module erp-module--reverse reveal">
+          <div class="erp-module-copy">
+            <p class="erp-module-kicker">Odoo · Módulo 4</p>
+            <h3>Facturación y reportes</h3>
+            <p>Automatiza emisión de facturas, notas de crédito y reportes administrativos. Facilita cierres periódicos con información limpia y ordenada.</p>
+            <ul>
+              <li>Facturación vinculada al flujo comercial</li>
+              <li>Reportes listos para control y auditoría interna</li>
+              <li>Menos tareas manuales en cierres</li>
+            </ul>
+          </div>
+          <figure class="erp-module-visual">
+            <img src="assets/images/demo-erp-odoo.png" alt="Odoo: módulo de facturación y reportes" width="1200" height="750" loading="lazy" decoding="async" data-demo-img>
+          </figure>
+        </article>
+
+        <article class="erp-module reveal">
+          <div class="erp-module-copy">
+            <p class="erp-module-kicker">Odoo · Módulo 5</p>
+            <h3>Proyectos y servicios</h3>
+            <p>Planifica tareas, responsables y entregables para operaciones basadas en proyectos. Mide avance y carga de trabajo en un panel centralizado.</p>
+            <ul>
+              <li>Planificación de hitos, tareas y tiempos</li>
+              <li>Seguimiento por responsable y estado de entrega</li>
+              <li>Control operativo para equipos de servicio</li>
+            </ul>
+          </div>
+          <figure class="erp-module-visual">
+            <img src="assets/images/hero-odoo-tableros-metricas.png" alt="Odoo: módulo de proyectos y servicios" width="1440" height="900" loading="lazy" decoding="async" data-demo-img>
+          </figure>
+        </article>
+
+        <article class="erp-module erp-module--reverse reveal">
+          <div class="erp-module-copy">
+            <p class="erp-module-kicker">Odoo · Módulo 6</p>
+            <h3>Punto de venta y canales</h3>
+            <p>Integra POS, catálogo y canales comerciales a una misma base operativa. Así mantienes precios, inventario y facturación alineados en todos los puntos.</p>
+            <ul>
+              <li>Ventas en tienda y canales conectadas al ERP</li>
+              <li>Inventario unificado para todos los puntos de venta</li>
+              <li>Experiencia comercial consistente</li>
+            </ul>
+          </div>
+          <figure class="erp-module-visual">
+            <img src="assets/images/demo-erp-odoo.png" alt="Odoo: módulo de punto de venta y canales" width="1200" height="750" loading="lazy" decoding="async" data-demo-img>
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section--tight benefits erp-benefits" aria-labelledby="benefits-heading">
+      <h2 id="benefits-heading" class="section-title reveal">Lo que resolvés con ERP Odoo</h2>
+      <p class="pillars-lede reveal">Resultados concretos para tu operación en Panamá: un solo sistema, datos confiables y equipos alineados sin depender de planillas sueltas.</p>
+
+      <div class="erp-modules">
+        <article class="erp-module reveal">
+          <div class="erp-module-copy">
+            <p class="erp-module-kicker">Resultado</p>
+            <h3>Un solo lugar para vender, comprar y facturar</h3>
+            <p>Dejás de cruzar correos, Excel y sistemas distintos. Cotizaciones, pedidos, inventario y facturación comparten la misma información, con historial por cliente y por operación.</p>
+            <ul>
+              <li>Menos errores por datos duplicados o desactualizados</li>
+              <li>Respuestas más rápidas a clientes y proveedores</li>
+              <li>Visibilidad del estado real de cada venta o compra</li>
+            </ul>
+          </div>
+          <figure class="erp-module-visual">
+            <img src="assets/images/erp-benefit-unified.svg" alt="Referencia visual: un solo flujo entre ventas, inventario y facturacion" width="960" height="540" loading="lazy" decoding="async">
+          </figure>
+        </article>
+
+        <article class="erp-module erp-module--reverse reveal">
+          <div class="erp-module-copy">
+            <p class="erp-module-kicker">Resultado</p>
+            <h3>Automatización donde antes había tareas manuales</h3>
+            <p>Reglas de aprobación, alertas y flujos estándar reducen la carga repetitiva. El equipo se enfoca en vender, cobrar y entregar en lugar de rellenar la misma información en varios lados.</p>
+            <ul>
+              <li>Menos retrabajo entre áreas comercial, operaciones y administración</li>
+              <li>Procesos repetibles y auditables</li>
+              <li>Mejor uso del tiempo del equipo en tareas de valor</li>
+            </ul>
+          </div>
+          <figure class="erp-module-visual">
+            <img src="assets/images/erp-benefit-automation.svg" alt="Referencia visual: automatizacion de reglas y aprobaciones" width="960" height="540" loading="lazy" decoding="async">
+          </figure>
+        </article>
+
+        <article class="erp-module reveal">
+          <div class="erp-module-copy">
+            <p class="erp-module-kicker">Resultado</p>
+            <h3>Control financiero y tesorería con números claros</h3>
+            <p>Pagos, movimientos y reportes quedan ordenados para ver liquidez, pendientes y prioridades. Podés anticipar problemas de caja y explicar variaciones con respaldo en el sistema.</p>
+            <ul>
+              <li>Mejor lectura de flujo de caja y obligaciones</li>
+              <li>Reportes listos para reuniones y decisiones rápidas</li>
+              <li>Menos sorpresas al cerrar períodos</li>
+            </ul>
+          </div>
+          <figure class="erp-module-visual">
+            <img src="assets/images/erp-benefit-treasury.svg" alt="Referencia visual: liquidez, informes y flujo de caja" width="960" height="540" loading="lazy" decoding="async">
+          </figure>
+        </article>
+
+        <article class="erp-module erp-module--reverse reveal">
+          <div class="erp-module-copy">
+            <p class="erp-module-kicker">Resultado</p>
+            <h3>Crecer sin multiplicar el desorden administrativo</h3>
+            <p>Al estandarizar procesos en Odoo, sumar usuarios, sucursales o líneas de negocio no implica duplicar planillas ni inventar controles paralelos. La base escala con soporte local y implementación por etapas.</p>
+            <ul>
+              <li>Onboarding más simple para nuevas personas en el equipo</li>
+              <li>Reglas y permisos acordes a cada rol</li>
+              <li>Base para seguir sumando módulos cuando lo necesites</li>
+            </ul>
+          </div>
+          <figure class="erp-module-visual">
+            <img src="assets/images/erp-benefit-scale.svg" alt="Referencia visual: escala del negocio con roles y sucursales" width="960" height="540" loading="lazy" decoding="async">
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <section id="etapas" class="section company-scale company-scale--sol" aria-labelledby="etapas-heading">
+      <p class="company-scale-eyebrow reveal">Para cada etapa</p>
+      <h2 id="etapas-heading" class="section-title reveal">Para startups, empresas globales y todo lo que hay en el medio.</h2>
+      <p class="company-scale-lede reveal">EasyTech adapta ERP, automatización y gestión de servicios a tu tamaño operativo, sin perder velocidad ni control.</p>
+      <div class="company-scale-grid">
+        <article class="company-scale-item reveal">
+          <h3>Startups</h3>
+          <p>Implementación ligera, procesos claros y visibilidad desde el primer mes para crecer con orden.</p>
+        </article>
+        <article class="company-scale-item reveal">
+          <h3>PYMES</h3>
+          <p>Unificamos ventas, inventario, tesorería y atención para que el equipo trabaje sobre una sola verdad.</p>
+        </article>
+        <article class="company-scale-item reveal">
+          <h3>Empresas globales</h3>
+          <p>Estandarización multi-sede, reportes ejecutivos y automatizaciones robustas con soporte local.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="cta" class="section cta" aria-labelledby="cta-title">
+      <h2 id="cta-title" class="reveal">Conversemos sobre tu ERP</h2>
+      <p class="reveal">Te mostramos el módulo ideal según tu proceso actual.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/50766884938?text=Quiero%20informaci%C3%B3n%20sobre%20Easy%20Odoo%20(ERP%20EasyTech)" class="btn btn-primary reveal" target="_blank" rel="noopener noreferrer">Solicitar demo ERP</a>
+        <a href="agenda.html" class="btn btn-ghost reveal">Agendar cita en la web</a>
+        <a href="mailto:easytechservices25@gmail.com?subject=Consulta%20ERP%20EasyTech%20(Odoo)" class="btn btn-ghost reveal">Escribir por correo</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="site-footer-brand">
+        <p class="site-footer-name">Easy Technology Services</p>
+        <p class="site-footer-tag">EasyTech Ecosystem — Plataformas, Soluciones y Servicios Profesionales.</p>
+        <p class="site-footer-contact">
+          <a href="mailto:info@easytech.services">info@easytech.services</a><br>
+          <a href="https://wa.me/50766884938?text=Hola%20EasyTech" target="_blank" rel="noopener noreferrer">+507 6688-4938</a> · WhatsApp
+        </p>
+      </div>
+      <div class="site-footer-columns">
+        <div class="site-footer-col">
+          <p class="site-footer-title">Soluciones</p>
+          <a href="soluciones.html">Easy Odoo</a>
+          <a href="facturacion-electronica.html">Facturación Electrónica</a>
+        </div>
+        <div class="site-footer-col">
+          <p class="site-footer-title">Plataformas</p>
+          <a href="easynodeone.html">EasyNodeOne</a>
+          <a href="econverso.html">Easy Converso</a>
+          <a href="eclassone.html">EClassOne</a>
+          <a href="ethesisone.html">EThesisOne</a>
+          <a href="eposone.html">EPOSOne</a>
+          <a href="epayroll.html">EPayRoll</a>
+        </div>
+        <div class="site-footer-col">
+          <p class="site-footer-title">Servicios Profesionales</p>
+          <a href="desarrollo-software.html">Desarrollo de Software</a>
+          <a href="consultoria-ti.html">Consultoría TI</a>
+        </div>
+        <div class="site-footer-col">
+          <p class="site-footer-title">Contacto</p>
+          <a href="agenda.html">Agendar cita</a>
+          <a href="contacto.html">Hablar con el equipo</a>
+          <a href="https://wa.me/50766884938?text=Hola%20EasyTech" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <p class="site-footer-copy">© <span id="y"></span> Easy Technology Services · Panamá · PH Camino de Cruces, Boulevard el Dorado, local 31</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/page-transitions.js"></script>
+</body>
+</html>

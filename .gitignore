@@ -1,0 +1,12 @@
+# Archivos locales / backup
+docs.zip
+*.zip
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/

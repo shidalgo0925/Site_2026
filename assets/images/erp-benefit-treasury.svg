@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="Tesoreria, flujo de caja e informes financieros">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="bar3" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#065f46"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <linearGradient id="line3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00a85c"/>
+      <stop offset="100%" stop-color="#5eead4"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" fill="url(#bg3)"/>
+  <text x="48" y="48" fill="#e2e8f0" font-family="system-ui,Segoe UI,sans-serif" font-size="14" font-weight="700">Liquidez y movimientos</text>
+  <text x="48" y="68" fill="#64748b" font-family="system-ui,sans-serif" font-size="11">Vista consolidada</text>
+  <!-- area chart line -->
+  <path d="M80 380 C180 340 220 300 320 320 S500 220 620 260 S780 180 880 200 L880 420 L80 420 Z" fill="url(#line3)" opacity="0.15"/>
+  <path d="M80 380 C180 340 220 300 320 320 S500 220 620 260 S780 180 880 200" fill="none" stroke="url(#line3)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- bars -->
+  <g>
+    <rect x="120" y="300" width="48" height="120" rx="4" fill="url(#bar3)" opacity="0.9"/>
+    <rect x="200" y="260" width="48" height="160" rx="4" fill="url(#bar3)" opacity="0.75"/>
+    <rect x="280" y="220" width="48" height="200" rx="4" fill="url(#bar3)" opacity="0.95"/>
+    <rect x="360" y="280" width="48" height="140" rx="4" fill="url(#bar3)" opacity="0.7"/>
+    <rect x="440" y="240" width="48" height="180" rx="4" fill="url(#bar3)" opacity="0.85"/>
+  </g>
+  <!-- side KPI cards -->
+  <rect x="620" y="100" width="300" height="72" rx="12" fill="#1e293b" stroke="#334155"/>
+  <text x="640" y="128" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="10">Saldo proyectado</text>
+  <text x="640" y="152" fill="#22c55e" font-family="system-ui,sans-serif" font-size="18" font-weight="700">$ 124.5k</text>
+  <rect x="620" y="190" width="300" height="72" rx="12" fill="#1e293b" stroke="#334155"/>
+  <text x="640" y="218" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="10">Pagos pendientes</text>
+  <text x="640" y="242" fill="#fbbf24" font-family="system-ui,sans-serif" font-size="18" font-weight="700">12</text>
+  <rect x="620" y="280" width="300" height="140" rx="12" fill="#162032" stroke="#00a85c" stroke-width="1" opacity="0.9"/>
+  <text x="640" y="308" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Flujo de caja</text>
+  <line x1="640" y1="360" x2="900" y2="360" stroke="#334155" stroke-width="1"/>
+  <line x1="640" y1="340" x2="880" y2="340" stroke="#22c55e" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+</svg>
