@@ -53,7 +53,7 @@
           "description": "Plataforma de membresías, eventos, citas, ventas y comunidades.",
           "featuresLabel": "Casos de uso",
           "features": ["Asociaciones", "Cámaras", "Colegios profesionales", "Institutos", "Organizaciones"],
-          "image": "assets/images/flyers/easynodeone.png",
+          "image": "assets/images/flyers/en1-1.png",
           "imageFallback": "assets/images/logo-easynodeone.svg",
           "variant": "easynodeone",
           "featured": true,
