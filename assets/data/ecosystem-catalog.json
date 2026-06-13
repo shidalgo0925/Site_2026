@@ -1,0 +1,172 @@
+{
+  "sectionId": "ecosistema",
+  "sectionTitle": "Qué vendemos hoy",
+  "sectionLede": "Tres líneas comerciales — Soluciones de Negocio, Plataformas SaaS y Servicios Profesionales — con página, flyer y canal de captación propio.",
+  "odooNote": "Easy Odoo: somos <strong>consultores independientes</strong> sobre <strong>Odoo</strong>.",
+  "categories": [
+    {
+      "id": "soluciones",
+      "title": "Soluciones de Negocio",
+      "grid": "duo",
+      "products": [
+        {
+          "slug": "easy-odoo",
+          "kicker": "Solución · Prioridad comercial",
+          "title": "Easy Odoo",
+          "description": "Implementación, soporte y desarrollo sobre Odoo.",
+          "featuresLabel": "Servicios",
+          "features": ["ERP", "Inventario", "Ventas", "Compras", "Contabilidad", "CxC / CxP", "Facturación electrónica", "Reportes gerenciales"],
+          "image": "assets/images/flyers/easy-odoo.png",
+          "visualStyle": "tarjeta",
+          "pageHref": "soluciones.html",
+          "pageLinkLabel": "Ver solución",
+          "ctaPrimary": { "label": "Solicitar demostración", "href": "agenda.html" }
+        },
+        {
+          "slug": "facturacion-electronica",
+          "kicker": "Solución · Panamá",
+          "title": "Facturación Electrónica Panamá",
+          "description": "Implementación y soporte para empresas panameñas.",
+          "featuresLabel": "Incluye",
+          "features": ["Factura fiscal", "Nota de crédito", "Consumidor final", "Integración ERP", "Cumplimiento DGI"],
+          "image": "assets/images/flyers/facturacion-electronica.png",
+          "visualStyle": "tarjeta",
+          "pageHref": "facturacion-electronica.html",
+          "pageLinkLabel": "Ver solución",
+          "ctaPrimary": {
+            "label": "Solicitar información",
+            "href": "https://wa.me/50766884938?text=Quiero%20informaci%C3%B3n%20sobre%20Facturaci%C3%B3n%20Electr%C3%B3nica%20Panam%C3%A1%20con%20EasyTech",
+            "external": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "plataformas",
+      "title": "Plataformas SaaS",
+      "grid": "default",
+      "products": [
+        {
+          "slug": "easynodeone",
+          "kicker": "Plataforma · En producción",
+          "title": "EasyNodeOne (EN1)",
+          "description": "Plataforma de membresías, eventos, citas, ventas y comunidades.",
+          "featuresLabel": "Casos de uso",
+          "features": ["Asociaciones", "Cámaras", "Colegios profesionales", "Institutos", "Organizaciones"],
+          "image": "assets/images/flyers/easynodeone.png",
+          "imageFallback": "assets/images/logo-easynodeone.svg",
+          "variant": "easynodeone",
+          "featured": true,
+          "pageHref": "easynodeone.html",
+          "pageLinkLabel": "Ver plataforma",
+          "ctaPrimary": {
+            "label": "Crear cuenta",
+            "href": "https://appprd.easynodeone.com/register",
+            "external": true
+          }
+        },
+        {
+          "slug": "easy-converso",
+          "kicker": "Plataforma · En producción",
+          "title": "Easy Converso",
+          "description": "Asistente inteligente para atención y automatización.",
+          "featuresLabel": "Casos de uso",
+          "features": ["Atención al cliente", "Soporte interno", "Captura de leads", "Automatización de consultas"],
+          "image": "assets/images/logo-econverso.svg",
+          "variant": "econverso",
+          "pageHref": "econverso.html",
+          "pageLinkLabel": "Ver plataforma",
+          "ctaPrimary": { "label": "Solicitar demostración", "href": "agenda.html" }
+        },
+        {
+          "slug": "eclassone",
+          "kicker": "Plataforma · IA educativa",
+          "title": "EClassOne",
+          "description": "Plataforma educativa con IA para exámenes, material didáctico y analítica académica.",
+          "featuresLabel": "Incluye",
+          "features": ["Generador de exámenes", "Calificación inteligente", "Material didáctico", "Analítica educativa"],
+          "image": "assets/images/eclassone/eclassone-hero.png",
+          "variant": "eclassone",
+          "pageHref": "eclassone.html",
+          "pageLinkLabel": "Ver plataforma",
+          "ctaPrimary": {
+            "label": "Solicitar demostración",
+            "href": "https://wa.me/50766884938?text=Quiero%20una%20demostraci%C3%B3n%20de%20EClassOne%20%E2%80%94%20EasyTech",
+            "external": true
+          }
+        },
+        {
+          "slug": "ethesisone",
+          "kicker": "Plataforma",
+          "title": "EThesisOne",
+          "description": "Gestión de trabajos de grado e investigación.",
+          "featuresLabel": "Incluye",
+          "features": ["Tutorías", "Revisiones", "Control documental"],
+          "image": "assets/images/flyers/ethesisone.png",
+          "soon": true,
+          "pageHref": "ethesisone.html",
+          "pageLinkLabel": "Conocer más"
+        },
+        {
+          "slug": "eposone",
+          "kicker": "Plataforma",
+          "title": "EPOSOne",
+          "description": "Punto de venta para pequeñas y medianas empresas.",
+          "featuresLabel": "Incluye",
+          "features": ["Ventas", "Inventario", "Caja", "Facturación"],
+          "image": "assets/images/flyers/eposone.png",
+          "soon": true,
+          "pageHref": "eposone.html",
+          "pageLinkLabel": "Conocer más"
+        },
+        {
+          "slug": "epayroll",
+          "kicker": "Plataforma",
+          "title": "EPayRoll",
+          "description": "Gestión de nómina y recursos humanos.",
+          "featuresLabel": "Incluye",
+          "features": ["Nómina", "Vacaciones", "Prestaciones", "Reportes"],
+          "image": "assets/images/flyers/epayroll.png",
+          "soon": true,
+          "pageHref": "epayroll.html",
+          "pageLinkLabel": "Conocer más"
+        }
+      ]
+    },
+    {
+      "id": "servicios",
+      "title": "Servicios Profesionales",
+      "grid": "duo",
+      "products": [
+        {
+          "slug": "desarrollo-software",
+          "kicker": "Servicio profesional",
+          "title": "Desarrollo de Software",
+          "description": "Aplicaciones a medida conectadas al ecosistema EasyTech.",
+          "featuresLabel": "Incluye",
+          "features": ["Aplicaciones web", "SaaS", "Integraciones", "APIs", "Automatización"],
+          "image": "assets/images/flyers/desarrollo-software.png",
+          "pageHref": "desarrollo-software.html",
+          "pageLinkLabel": "Ver servicio",
+          "ctaPrimary": { "label": "Agendar reunión", "href": "agenda.html" }
+        },
+        {
+          "slug": "consultoria-ti",
+          "kicker": "Servicio profesional",
+          "title": "Consultoría TI",
+          "description": "Acompañamiento estratégico para adoptar el ecosistema con criterio.",
+          "featuresLabel": "Incluye",
+          "features": ["Transformación digital", "Arquitectura empresarial", "Gobierno TI", "Estrategia tecnológica"],
+          "image": "assets/images/flyers/consultoria-ti.png",
+          "pageHref": "consultoria-ti.html",
+          "pageLinkLabel": "Ver servicio",
+          "ctaPrimary": {
+            "label": "Hablar con un consultor",
+            "href": "https://wa.me/50766884938?text=Consulta%20sobre%20consultor%C3%ADa%20TI%20con%20EasyTech",
+            "external": true
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+/* EasyTech — página de inicio (index.html). Requiere main.css + ramp-theme.css. */
+
+/* Hero: CTAs y pills en una sola fila */
+.ramp.page-home .hero-actions {
+  flex-wrap: nowrap;
+  gap: 0.65rem;
+}
+
+.ramp.page-home .hero-actions .btn {
+  flex: 0 1 auto;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 0.875rem;
+}
+
+.ramp.page-home .hero-pills {
+  flex-wrap: nowrap;
+  gap: 0.4rem;
+  max-width: 100%;
+}
+
+.ramp.page-home .hero-pills a {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+@media (min-width: 900px) {
+  .ramp.page-home .hero--ramp .hero-copy {
+    max-width: min(32rem, 100%);
+  }
+}
+
+@media (max-width: 480px) {
+  .ramp.page-home .hero-actions {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .ramp.page-home .hero-pills {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.ramp.page-home #ecosistema.value-pillars {
+  padding-top: clamp(0.75rem, 2vw, 1.25rem);
+}
+
+.ramp.page-home #ecosistema.value-pillars .section-title {
+  margin-top: 0;
+}
+
+.ramp.page-home .ecosystem-category {
+  max-width: 1180px;
+  margin: 0 auto 1.75rem;
+}
+
+.ramp.page-home .ecosystem-category:last-child {
+  margin-bottom: 0;
+}
+
+.ramp.page-home .ecosystem-category-title {
+  margin: 0 0 1.25rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.ramp.page-home #cta.cta {
+  border-top: 1px solid #e5e7eb;
+  background: #f8fafc;
+}
+
+.ramp.page-home .section.thirty-days {
+  padding-top: clamp(0.75rem, 2vw, 1.25rem);
+}
+
+.ramp.page-home .thirty-days .section-title {
+  margin-top: 0;
+}
+
+.ramp.page-home .thirty-days-eyebrow {
+  margin-top: 0;
+  margin-bottom: 0.45rem;
+}
+
+.ramp.page-home .section.company-scale {
+  padding-top: clamp(0.75rem, 2vw, 1.25rem);
+}
+
+.ramp.page-home .company-scale-eyebrow {
+  margin-top: 0;
+}
+
+.ramp.page-home .company-scale .section-title {
+  margin-top: 0;
+}
+
+@media (min-width: 1100px) {
+  .ramp.page-home .value-pillars-grid--duo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tarjetas comerciales (flyers landscape) en catálogo home */
+.ramp.page-home .value-card--tarjeta .value-card-visual {
+  display: block;
+  padding: 0;
+  background: #fff;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.ramp.page-home .value-card--tarjeta .value-card-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: top center;
+}

@@ -9,8 +9,8 @@ DEST = ROOT / "assets" / "images" / "flyers"
 # Números según lámina Productos.png (EASYTECH SERVICES)
 FLYER_MAP = {
     "desarrollo-software": "11.png",
-    "easy-odoo": "22.png",
-    "facturacion-electronica": "33.png",
+    "easy-odoo": "TarjetaEasyOdoo-2.png",
+    "facturacion-electronica": "TrajetaFacturacionElectronica-3.png",
     "consultoria-ti": "44.png",
     "easynodeone": "55.png",
     "eclassone": "66.png",
