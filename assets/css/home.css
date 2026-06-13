@@ -110,7 +110,8 @@
   display: block;
   padding: 0;
   background: #fff;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 3 / 2;
+  min-height: 12rem;
   overflow: hidden;
 }
 

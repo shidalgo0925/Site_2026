@@ -42,6 +42,8 @@ def render_card(product: dict) -> str:
         classes.insert(1, "value-card--easynodeone")
     elif variant == "econverso":
         classes.insert(1, "value-card--econverso")
+    elif variant == "epayroll":
+        classes.insert(1, "value-card--epayroll")
     if product.get("featured"):
         classes.append("value-card--featured")
     if product.get("soon"):
@@ -143,8 +145,8 @@ def build_index() -> str:
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Easy Technology Services — escaparate comercial del EasyTech Ecosystem: plataformas SaaS, soluciones de negocio y servicios profesionales en Panamá.">
-  <title>Easy Technology Services — EasyTech Ecosystem</title>
+  <meta name="description" content="Easy Technology Services — escaparate comercial EasyTech: plataformas SaaS, soluciones de negocio y servicios profesionales en Panamá.">
+  <title>Easy Technology Services — EasyTech</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">

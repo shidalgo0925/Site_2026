@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="EPayRoll: nómina y planilla del ecosistema EasyTech. Próximamente.">
-  <title>EPayRoll — Nómina | EasyTech</title>
+  <meta name="description" content="EPayRoll — plataforma laboral configurable para Panamá: planilla, vacaciones programadas, CSS, DGI, liquidación y cumplimiento. Próximamente en EasyTech.">
+  <title>EPayRoll — Planilla Panamá | EasyTech</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -131,39 +131,170 @@
   </header>
 
   <main id="page-main" class="page-surface">
-    <section class="solution-hero" aria-labelledby="epayroll-hero-h1">
+    <section class="solution-hero epr-hero" aria-labelledby="epayroll-hero-h1">
       <div class="solution-hero-inner reveal">
         <div class="solution-hero-copy">
-              <span class="solution-hero-soon">Próximamente</span>
-          <div class="solution-hero-logo-row">
-            <img src="assets/images/logo-easytech-services.png" alt="" width="88" height="88" class="solution-hero-logo-img" decoding="async" aria-hidden="true" />
-            <div>
-              <p class="solution-hero-wordmark">EPayRoll</p>
-              <p class="solution-hero-eyebrow">Plataforma EasyTech</p>
-            </div>
+          <span class="solution-hero-soon">Próximamente</span>
+          <div class="solution-hero-logo-row solution-hero-logo-row--epr">
+            <img src="assets/images/epayroll/brand-lockup.png" alt="EPayRoll — Gestión de Planilla" width="480" height="180" class="solution-hero-brand-logo solution-hero-brand-logo--wordmark" decoding="async" onerror="this.onerror=null;this.src='assets/images/epayroll/logo-full.png';">
           </div>
-          <h1 id="epayroll-hero-h1" class="solution-hero-title">Nómina y planilla con EPayRoll</h1>
-          <p class="solution-hero-lede">Estamos preparando la plataforma de planilla del ecosistema EasyTech. Escribinos si querés ser avisado.</p>
+          <p class="solution-hero-eyebrow">EasyTech · Plataforma de planilla · Panamá</p>
+          <h1 id="epayroll-hero-h1" class="solution-hero-title">Planilla laboral <span class="epr-accent">configurable y auditable</span></h1>
+          <p class="solution-hero-lede">EPayRoll no es solo una planilla: es una plataforma laboral para Panamá, gobernada por tablas maestras y un motor de cálculo genérico — preparada para CSS, DGI, vacaciones, liquidación e integraciones contables y bancarias.</p>
           <div class="solution-hero-actions">
-                <a href="mailto:easytechservices25@gmail.com?subject=Inter%C3%A9s%20en%20EPayRoll" class="btn btn-solution-primary" target="_blank" rel="noopener noreferrer">Avísame por email</a>
-                <a href="https://wa.me/50766884938?text=Inter%C3%A9s%20en%20EPayRoll%20%E2%80%94%20EasyTech" class="btn btn-solution-ghost" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a href="https://wa.me/50766884938?text=Inter%C3%A9s%20en%20EPayRoll%20%E2%80%94%20EasyTech" class="btn btn-epr-primary" target="_blank" rel="noopener noreferrer">Quiero ser avisado</a>
+            <a href="#epr-modulos" class="btn btn-epr-ghost">Ver módulos</a>
           </div>
+          <p class="solution-hero-footnote">Basado en Código de Trabajo, CSS/DGI y buenas prácticas de RRHH · <a href="contacto.html">Contacto</a></p>
         </div>
         <div class="solution-hero-visual">
           <figure class="solution-hero-screenshot">
-            <img src="assets/images/flyers/epayroll.png" alt="Flyer EPayRoll — Nómina" width="1200" height="1697" loading="eager" decoding="async" onerror="this.onerror=null;this.src='assets/images/logo-easytech-services.png';this.classList.add('solution-hero-fallback-img');">
+            <img src="assets/images/epayroll/hero.png" alt="EPayRoll — gestión de planilla y nómina EasyTech" width="1050" height="710" loading="eager" decoding="async" onerror="this.onerror=null;this.src='assets/images/flyers/epayroll.png';">
           </figure>
         </div>
       </div>
     </section>
 
-    <section class="section cta" aria-labelledby="cta-h2">
-      <h2 id="cta-h2" class="reveal">¿Seguimos por WhatsApp o agenda?</h2>
-      <p class="reveal">El equipo EasyTech te orienta sobre EPayRoll — Nómina.</p>
+    <section class="epr-pillars" aria-label="Principios de EPayRoll">
+      <div class="epr-pillars-inner">
+        <article class="epr-pillar reveal">
+          <span class="epr-pillar-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2"/></svg></span>
+          <h2>Configuración sobre código</h2>
+          <p>Reglas laborales en tablas maestras, no en código fijo.</p>
+        </article>
+        <article class="epr-pillar reveal">
+          <span class="epr-pillar-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <h2>Cumplimiento Panamá</h2>
+          <p>CSS, ISR, SIPE y normativa laboral local.</p>
+        </article>
+        <article class="epr-pillar reveal">
+          <span class="epr-pillar-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+          <h2>Control financiero</h2>
+          <p>Provisiones, pasivos laborales y costo vacacional visible.</p>
+        </article>
+        <article class="epr-pillar reveal">
+          <span class="epr-pillar-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+          <h2>Auditoría total</h2>
+          <p>Quién cambió qué, cuándo y con qué vigencia.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section epr-principle" aria-labelledby="epr-principle-heading">
+      <h2 id="epr-principle-heading" class="section-title reveal">Motor genérico de cálculo</h2>
+      <p class="pillars-lede reveal">No programamos <code>if horas_extra: total = salario * 1.25</code>. El sistema lee reglas, ejecuta fórmulas, valida topes, aplica vigencias y recalcula históricos cuando la ley o la política cambian.</p>
+      <figure class="epr-visual reveal">
+        <img src="assets/images/epayroll/architecture.png" alt="EPayRoll — arquitectura configurable sobre tablas maestras" width="1024" height="320" loading="lazy" decoding="async">
+      </figure>
+    </section>
+
+    <section class="section epr-modules" id="epr-modulos" aria-labelledby="epr-modules-heading">
+      <h2 id="epr-modules-heading" class="section-title reveal">Módulos principales</h2>
+      <p class="pillars-lede reveal">Seis pilares para operar planilla de punta a punta — desde el motor de cálculo hasta exportación bancaria y cumplimiento fiscal.</p>
+      <div class="epr-feature-grid">
+        <article class="epr-feature-card reveal">
+          <figure class="epr-feature-card-visual"><img src="assets/images/epayroll/mod-motor.png" alt="Motor de cálculo configurable EPayRoll" width="640" height="360" loading="lazy" decoding="async"></figure>
+          <div class="epr-feature-card-body"><p class="epr-feature-card-kicker">Arquitectura</p><h3>Motor de cálculo</h3><p>Fórmulas, prioridades, topes, redondeos y recálculo retroactivo gobernados por configuración.</p></div>
+        </article>
+        <article class="epr-feature-card epr-feature-card--featured reveal">
+          <figure class="epr-feature-card-visual"><img src="assets/images/epayroll/mod-vacaciones.png" alt="Vacaciones programadas EPayRoll — módulo obligatorio" width="640" height="360" loading="lazy" decoding="async"></figure>
+          <div class="epr-feature-card-body"><p class="epr-feature-card-kicker">Obligatorio</p><h3>Vacaciones programadas</h3><p>Saldo, calendario, alertas gerenciales y control del pasivo vacacional — no improvisación.</p></div>
+        </article>
+        <article class="epr-feature-card reveal">
+          <figure class="epr-feature-card-visual"><img src="assets/images/epayroll/mod-planilla.png" alt="Planilla y conceptos de nómina EPayRoll" width="640" height="360" loading="lazy" decoding="async"></figure>
+          <div class="epr-feature-card-body"><p class="epr-feature-card-kicker">Nómina</p><h3>Planilla y conceptos</h3><p>Ingresos, descuentos, aportes patronales, provisiones, décimo, prima y viáticos.</p></div>
+        </article>
+        <article class="epr-feature-card reveal">
+          <figure class="epr-feature-card-visual"><img src="assets/images/epayroll/mod-liquidacion.png" alt="Liquidación laboral EPayRoll" width="640" height="360" loading="lazy" decoding="async"></figure>
+          <div class="epr-feature-card-body"><p class="epr-feature-card-kicker">Salida</p><h3>Liquidación laboral</h3><p>Renuncia, despido, mutuo acuerdo, fin de contrato, indemnización y saldos pendientes.</p></div>
+        </article>
+        <article class="epr-feature-card reveal">
+          <figure class="epr-feature-card-visual"><img src="assets/images/epayroll/mod-asistencia.png" alt="Asistencia y turnos EPayRoll" width="640" height="360" loading="lazy" decoding="async"></figure>
+          <div class="epr-feature-card-body"><p class="epr-feature-card-kicker">Tiempo</p><h3>Asistencia y turnos</h3><p>Biometría, QR, móvil, geolocalización, extras, tardanzas, recargos y feriados.</p></div>
+        </article>
+        <article class="epr-feature-card reveal">
+          <figure class="epr-feature-card-visual"><img src="assets/images/epayroll/mod-cumplimiento.png" alt="CSS DGI y exportación bancaria EPayRoll" width="640" height="360" loading="lazy" decoding="async"></figure>
+          <div class="epr-feature-card-body"><p class="epr-feature-card-kicker">Cumplimiento</p><h3>CSS, DGI y banca</h3><p>SIPE, reportes CSS/ISR, acumulados anuales y exportación ACH configurable por banco.</p></div>
+        </article>
+      </div>
+      <figure class="epr-visual reveal">
+        <img src="assets/images/epayroll/modules.png" alt="EPayRoll — módulos principales de planilla" width="1920" height="720" loading="lazy" decoding="async">
+      </figure>
+    </section>
+
+    <section class="section epr-vacaciones" id="epr-vacaciones" aria-labelledby="epr-vacaciones-heading">
+      <span class="epr-vacaciones-badge reveal">Módulo obligatorio</span>
+      <h2 id="epr-vacaciones-heading" class="section-title reveal">Planificación obligatoria de vacaciones</h2>
+      <p class="pillars-lede reveal">Evita acumulación excesiva, improvisación operativa y pasivos laborales ocultos. Convierte vacaciones en herramienta de control financiero y continuidad operativa.</p>
+      <div class="epr-two-col">
+        <div class="reveal">
+          <h3 class="epr-subtitle">Control de saldo y política</h3>
+          <ul class="nodeone-checklist-list">
+            <li>Días ganados, tomados, vencidos y pendientes por empleado</li>
+            <li>Valor monetario acumulado del pasivo vacacional</li>
+            <li>Máximo acumulable con alertas y bloqueo preventivo</li>
+            <li>Calendario obligatorio con sugerencia inteligente de fechas</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <h3 class="epr-subtitle">Flujo, alertas e impacto</h3>
+          <ul class="nodeone-checklist-list">
+            <li>Solicitud → RRHH → jefe → confirmación → planilla automática</li>
+            <li>Alertas: exceso de días, áreas críticas, vacaciones vencidas</li>
+            <li>Anti-improvisación: anticipación mínima y excepciones documentadas</li>
+            <li>Provisión contable mensual e impacto en liquidación final</li>
+          </ul>
+        </div>
+      </div>
+      <figure class="epr-visual reveal">
+        <img src="assets/images/epayroll/vacaciones-featured.png" alt="EPayRoll — módulo de vacaciones programadas" width="640" height="360" loading="lazy" decoding="async">
+      </figure>
+    </section>
+
+    <section class="section epr-masters" aria-labelledby="epr-masters-heading">
+      <h2 id="epr-masters-heading" class="section-title reveal">Tablas maestras configurables</h2>
+      <p class="pillars-lede reveal">El programador construye el motor; RRHH y consultores configuran la operación sin tocar código.</p>
+      <div class="epr-master-grid reveal">
+        <article class="epr-master-card"><h3>Tipos de contrato</h3><p>Indefinido, definido, obra, parcial, temporal — con reglas de vacaciones, décimo y liquidación.</p></article>
+        <article class="epr-master-card"><h3>Conceptos de nómina</h3><p>Ingresos, descuentos, aportes patronales y provisiones versionados.</p></article>
+        <article class="epr-master-card"><h3>Reglas de cálculo</h3><p>Fórmulas, vigencias, prioridades, topes y contratos aplicables.</p></article>
+        <article class="epr-master-card"><h3>ISR y CSS</h3><p>Tablas versionadas por vigencia con históricos auditables.</p></article>
+        <article class="epr-master-card"><h3>Jornadas y turnos</h3><p>Diurno, nocturno, mixto, guardias, feriados y validaciones legales.</p></article>
+        <article class="epr-master-card"><h3>Feriados</h3><p>Nacionales, locales, puentes y recuperables.</p></article>
+        <article class="epr-master-card"><h3>Asignaciones</h3><p>Bonos, comisiones, viáticos y descuentos por empleado.</p></article>
+        <article class="epr-master-card"><h3>Auditoría</h3><p>Quién creó, modificó, cuándo, vigencia y motivo de cada cambio.</p></article>
+      </div>
+    </section>
+
+    <section class="section epr-integrations" aria-labelledby="epr-integrations-heading">
+      <h2 id="epr-integrations-heading" class="section-title reveal">Integraciones del ecosistema</h2>
+      <div class="epr-two-col">
+        <div class="reveal">
+          <h3 class="epr-subtitle">Contabilidad y ERP</h3>
+          <ul class="nodeone-checklist-list">
+            <li>Asientos de planilla, provisiones y pasivos laborales</li>
+            <li>Easy Odoo, QuickBooks, SAP, Peachtree y ERP propios</li>
+            <li>Exportación bancaria ACH — Banco General, Banistmo, BAC, Caja de Ahorros</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <h3 class="epr-subtitle">Asistencia y cumplimiento</h3>
+          <ul class="nodeone-checklist-list">
+            <li>Reloj, biometría, QR, móvil y geolocalización</li>
+            <li>SIPE, reportes CSS/ISR y acumulados anuales</li>
+            <li>Conectado a EasyNodeOne y al resto del ecosistema EasyTech</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta epr-cta" aria-labelledby="cta-h2">
+      <h2 id="cta-h2" class="reveal">¿Quiere ser de los primeros en EPayRoll?</h2>
+      <p class="reveal">Estamos construyendo la plataforma laboral configurable para Panamá. Escríbanos para demo temprana o lista de espera.</p>
       <div class="cta-actions">
-        <a href="mailto:easytechservices25@gmail.com?subject=Inter%C3%A9s%20en%20EPayRoll" class="btn btn-primary reveal" target="_blank" rel="noopener noreferrer">Avísame por email</a>
-        <a href="agenda.html" class="btn btn-ghost reveal">Agendar cita</a>
-        <a href="contacto.html" class="btn btn-ghost reveal">Contacto</a>
+        <a href="https://wa.me/50766884938?text=Inter%C3%A9s%20en%20EPayRoll%20%E2%80%94%20EasyTech" class="btn btn-epr-primary reveal" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="mailto:info@easytech.services?subject=Inter%C3%A9s%20en%20EPayRoll" class="btn btn-epr-ghost reveal">Correo</a>
+        <a href="agenda.html" class="btn btn-epr-ghost reveal">Agendar cita</a>
       </div>
     </section>
   </main>

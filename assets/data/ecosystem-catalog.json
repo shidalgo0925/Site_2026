@@ -1,6 +1,6 @@
 {
   "sectionId": "ecosistema",
-  "sectionTitle": "Qué vendemos hoy",
+  "sectionTitle": "Nuestros Productos",
   "sectionLede": "Tres líneas comerciales — Soluciones de Negocio, Plataformas SaaS y Servicios Profesionales — con página, flyer y canal de captación propio.",
   "odooNote": "Easy Odoo: somos <strong>consultores independientes</strong> sobre <strong>Odoo</strong>.",
   "categories": [
@@ -97,36 +97,50 @@
         },
         {
           "slug": "ethesisone",
-          "kicker": "Plataforma",
-          "title": "EThesisOne",
-          "description": "Gestión de trabajos de grado e investigación.",
+          "kicker": "Plataforma · Easy Thesis",
+          "title": "Easy Thesis",
+          "description": "Plataforma integral de gestión del ciclo de tesis para universidades.",
           "featuresLabel": "Incluye",
-          "features": ["Tutorías", "Revisiones", "Control documental"],
-          "image": "assets/images/flyers/ethesisone.png",
-          "soon": true,
+          "features": ["Expediente único", "Workflow académico", "Gestión documental", "Trazabilidad"],
+          "image": "assets/images/easythesis/hero-portada.png",
+          "imageFallback": "assets/images/easythesis/logo-horizontal.png",
+          "variant": "ethesisone",
           "pageHref": "ethesisone.html",
-          "pageLinkLabel": "Conocer más"
+          "pageLinkLabel": "Ver plataforma",
+          "ctaPrimary": {
+            "label": "Solicitar demostración",
+            "href": "mailto:info@easytech.services?subject=Solicitud%20de%20demostraci%C3%B3n%20%E2%80%94%20Easy%20Thesis",
+            "external": true
+          }
         },
         {
           "slug": "eposone",
-          "kicker": "Plataforma",
+          "kicker": "Plataforma · Punto de venta",
           "title": "EPOSOne",
-          "description": "Punto de venta para pequeñas y medianas empresas.",
+          "description": "Punto de venta simple, rápido y poderoso para retail, restaurantes y servicios.",
           "featuresLabel": "Incluye",
-          "features": ["Ventas", "Inventario", "Caja", "Facturación"],
-          "image": "assets/images/flyers/eposone.png",
-          "soon": true,
+          "features": ["Ventas", "Inventario", "Clientes", "Reportes", "Online y offline"],
+          "image": "assets/images/eposone/hero-card.png",
+          "imageFallback": "assets/images/flyers/eposone.png",
+          "variant": "eposone",
           "pageHref": "eposone.html",
-          "pageLinkLabel": "Conocer más"
+          "pageLinkLabel": "Ver plataforma",
+          "ctaPrimary": {
+            "label": "Solicitar demostración",
+            "href": "https://wa.me/50766884938?text=Quiero%20una%20demostraci%C3%B3n%20de%20EPOSOne%20%E2%80%94%20EasyTech",
+            "external": true
+          }
         },
         {
           "slug": "epayroll",
-          "kicker": "Plataforma",
+          "kicker": "Plataforma · Próximamente",
           "title": "EPayRoll",
-          "description": "Gestión de nómina y recursos humanos.",
+          "description": "Planilla laboral configurable para Panamá — motor de cálculo, vacaciones programadas, CSS/DGI y liquidación.",
           "featuresLabel": "Incluye",
-          "features": ["Nómina", "Vacaciones", "Prestaciones", "Reportes"],
-          "image": "assets/images/flyers/epayroll.png",
+          "features": ["Motor de cálculo", "Vacaciones programadas", "Liquidación laboral", "CSS / DGI / SIPE", "Asistencia y turnos", "Integración contable"],
+          "image": "assets/images/epayroll/hero-card.png",
+          "imageFallback": "assets/images/flyers/epayroll.png",
+          "variant": "epayroll",
           "soon": true,
           "pageHref": "epayroll.html",
           "pageLinkLabel": "Conocer más"
@@ -140,15 +154,22 @@
       "products": [
         {
           "slug": "desarrollo-software",
-          "kicker": "Servicio profesional",
-          "title": "Desarrollo de Software",
-          "description": "Aplicaciones a medida conectadas al ecosistema EasyTech.",
+          "kicker": "Servicio profesional · Desarrollo de Software",
+          "title": "Desarrollo de Software a la Medida",
+          "description": "Aplicaciones personalizadas conectadas al ecosistema EasyTech para impulsar la transformación digital de su organización.",
           "featuresLabel": "Incluye",
-          "features": ["Aplicaciones web", "SaaS", "Integraciones", "APIs", "Automatización"],
+          "features": ["Apps web", "Apps móviles", "APIs", "Automatización e IA", "SaaS en la nube", "Dashboards"],
+          "visualStyle": "tarjeta",
           "image": "assets/images/flyers/desarrollo-software.png",
+          "imageFallback": "assets/images/desarrollo-software/flyer-full.png",
+          "variant": "desarrollo-software",
           "pageHref": "desarrollo-software.html",
-          "pageLinkLabel": "Ver servicio",
-          "ctaPrimary": { "label": "Agendar reunión", "href": "agenda.html" }
+          "pageLinkLabel": "Ver casos de uso",
+          "ctaPrimary": {
+            "label": "Solicitar asesoría",
+            "href": "https://wa.me/50766884938?text=Solicito%20asesor%C3%ADa%20de%20Desarrollo%20de%20Software%20%E2%80%94%20EasyTech",
+            "external": true
+          }
         },
         {
           "slug": "consultoria-ti",
@@ -157,7 +178,9 @@
           "description": "Acompañamiento estratégico para adoptar el ecosistema con criterio.",
           "featuresLabel": "Incluye",
           "features": ["Transformación digital", "Arquitectura empresarial", "Gobierno TI", "Estrategia tecnológica"],
+          "visualStyle": "tarjeta",
           "image": "assets/images/flyers/consultoria-ti.png",
+          "imageFallback": "assets/images/consultoria-ti/flyer-full.png",
           "pageHref": "consultoria-ti.html",
           "pageLinkLabel": "Ver servicio",
           "ctaPrimary": {
