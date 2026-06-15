@@ -134,6 +134,13 @@
   <main id="page-main" class="page-surface page-surface--booking">
     <section id="agenda" class="section schedule schedule--booking" aria-labelledby="schedule-heading">
       <div class="ecalendar-shell booking-shell" id="ecalendar-app" data-ecalendar-app>
+        <nav class="booking-mobile-progress" aria-label="Progreso de reserva" data-ecal-mobile-progress>
+          <ol class="booking-mobile-progress__list">
+            <li class="booking-mobile-progress__step is-current" data-ecal-step="date"><span class="booking-mobile-progress__num">1</span> Fecha</li>
+            <li class="booking-mobile-progress__step" data-ecal-step="time"><span class="booking-mobile-progress__num">2</span> Hora</li>
+            <li class="booking-mobile-progress__step" data-ecal-step="data"><span class="booking-mobile-progress__num">3</span> Datos</li>
+          </ol>
+        </nav>
         <div class="ecalendar-panel booking-panel" data-ecal-panel>
           <aside class="booking-side">
             <div class="booking-info-head">
@@ -151,7 +158,7 @@
               <label class="ecalendar-section-title" for="ecal-duration-wrap">Duración</label>
               <select class="ecalendar-duration" data-ecal-duration id="ecal-duration-wrap" aria-label="Duración de la cita"></select>
             </div>
-            <div class="booking-block booking-block--slots">
+            <div class="booking-block booking-block--slots" data-ecal-slots-block>
               <p class="ecalendar-section-title">Horarios disponibles</p>
               <p class="ecalendar-slots-hint" data-ecal-slots-hint>Elegí una fecha en el calendario.</p>
               <div class="ecalendar-slots" data-ecal-slots role="group" aria-label="Horarios disponibles"></div>

@@ -229,6 +229,36 @@
     return base + "?text=" + encodeURIComponent(text);
   }
 
+  function isMobileLayout() {
+    return window.matchMedia("(max-width: 640px)").matches;
+  }
+
+  function scrollMobileSection(el) {
+    if (!el || !isMobileLayout()) return;
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function updateMobileProgress(root, state) {
+    var nav = root.querySelector("[data-ecal-mobile-progress]");
+    if (!nav) return;
+    var steps = nav.querySelectorAll("[data-ecal-step]");
+    var phase = "date";
+    if (state.selectedDate && state.selectedTime) phase = "data";
+    else if (state.selectedDate) phase = "time";
+
+    steps.forEach(function (step) {
+      var key = step.getAttribute("data-ecal-step");
+      step.classList.remove("is-current", "is-done");
+      if (key === phase) step.classList.add("is-current");
+      else if (
+        (key === "date" && (phase === "time" || phase === "data")) ||
+        (key === "time" && phase === "data")
+      ) {
+        step.classList.add("is-done");
+      }
+    });
+  }
+
   function initApp(root) {
     if (!root || root.dataset.ecalendarReady === "1") return;
     root.dataset.ecalendarReady = "1";
@@ -267,6 +297,8 @@
       successDetail: root.querySelector("[data-ecal-success-detail]"),
       successWa: root.querySelector("[data-ecal-success-wa]"),
       panel: root.querySelector("[data-ecal-panel]"),
+      slotsBlock: root.querySelector("[data-ecal-slots-block]"),
+      dataBlock: root.querySelector(".booking-data"),
     };
 
     function showAlert(msg, type) {
@@ -429,6 +461,7 @@
       });
       els.slots.innerHTML = html;
       updateSelectedTimeLabel();
+      updateMobileProgress(root, state);
     }
 
     function loadSlots() {
@@ -447,6 +480,7 @@
         .finally(function () {
           state.loading = false;
           renderSlots();
+          scrollMobileSection(els.slotsBlock);
         });
     }
 
@@ -454,6 +488,7 @@
     populateDuration();
     renderMonth();
     renderSlots();
+    updateMobileProgress(root, state);
     var cap = siteCaptcha();
     if (cap && els.captchaMount) cap.mount(els.captchaMount);
 
@@ -467,6 +502,7 @@
         renderMonth();
         loadSlots();
         showAlert("");
+        updateMobileProgress(root, state);
         return;
       }
     });
@@ -480,7 +516,10 @@
         state.selectedTime = slotBtn.getAttribute("data-ecal-time");
         renderSlots();
         showAlert("");
-        if (els.selectedTimeEl && els.selectedTimeEl.scrollIntoView) {
+        updateMobileProgress(root, state);
+        if (isMobileLayout()) {
+          scrollMobileSection(els.dataBlock);
+        } else if (els.selectedTimeEl && els.selectedTimeEl.scrollIntoView) {
           els.selectedTimeEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
         }
       });

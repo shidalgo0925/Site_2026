@@ -516,6 +516,11 @@
   justify-content: center;
 }
 
+/* Barra de progreso — solo móvil */
+.ramp.page-agenda .booking-mobile-progress {
+  display: none;
+}
+
 /* Tablet */
 @media (max-width: 960px) {
   .ramp.page-agenda .booking-panel {
@@ -553,31 +558,252 @@
 
 /* Móvil */
 @media (max-width: 640px) {
-  .ramp.page-agenda .schedule.schedule--booking {
-    padding-left: 0.65rem;
-    padding-right: 0.65rem;
+  .ramp.page-agenda .page-surface--booking {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
+  .ramp.page-agenda .schedule.schedule--booking {
+    padding: 0.35rem 0.5rem 0.65rem;
+  }
+
+  .ramp.page-agenda .booking-shell {
+    border-radius: 12px;
+    border-left: none;
+    border-right: none;
+    box-shadow: 0 2px 16px rgba(15, 23, 42, 0.06);
+  }
+
+  /* Progreso 1 → 2 → 3 */
+  .ramp.page-agenda .booking-mobile-progress {
+    display: block;
+    padding: 0.55rem 0.75rem;
+    background: #fff;
+    border-bottom: 1px solid #eef2f6;
+  }
+
+  .ramp.page-agenda .booking-mobile-progress__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.35rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ramp.page-agenda .booking-mobile-progress__step {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    min-height: 2rem;
+    padding: 0.25rem 0.35rem;
+    border-radius: 999px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: #94a3b8;
+    background: #f1f5f9;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .ramp.page-agenda .booking-mobile-progress__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.125rem;
+    height: 1.125rem;
+    border-radius: 50%;
+    font-size: 0.625rem;
+    font-weight: 700;
+    background: #e2e8f0;
+    color: #64748b;
+  }
+
+  .ramp.page-agenda .booking-mobile-progress__step.is-current {
+    color: #1e40af;
+    background: #eff6ff;
+  }
+
+  .ramp.page-agenda .booking-mobile-progress__step.is-current .booking-mobile-progress__num {
+    background: #2563eb;
+    color: #fff;
+  }
+
+  .ramp.page-agenda .booking-mobile-progress__step.is-done {
+    color: #047857;
+    background: #ecfdf5;
+  }
+
+  .ramp.page-agenda .booking-mobile-progress__step.is-done .booking-mobile-progress__num {
+    background: #10b981;
+    color: #fff;
+  }
+
+  /* Calendario primero, touch-friendly */
   .ramp.page-agenda .booking-calendar {
-    padding: 0.75rem 0.65rem;
+    padding: 0.65rem 0.75rem 0.75rem;
     height: auto;
   }
 
+  .ramp.page-agenda .booking-calendar .ecalendar-month-label {
+    font-size: 1rem;
+  }
+
+  .ramp.page-agenda .booking-calendar .ecalendar-month-btn {
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.25rem;
+  }
+
+  .ramp.page-agenda .booking-calendar .ecalendar-weekdays {
+    gap: 0.2rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .ramp.page-agenda .booking-calendar .ecalendar-weekday {
+    font-size: 0.6875rem;
+  }
+
   .ramp.page-agenda .booking-calendar .ecalendar-days {
-    min-height: 9.5rem;
+    min-height: 10.5rem;
+    gap: 0.25rem;
+    grid-auto-rows: minmax(2.75rem, 1fr);
   }
 
   .ramp.page-agenda .booking-calendar .ecalendar-day {
-    font-size: 0.875rem;
-    min-height: 1.85rem;
-    border-radius: 8px;
+    font-size: 0.9375rem;
+    min-height: 2.75rem;
+    border-radius: 10px;
   }
 
+  .ramp.page-agenda .booking-calendar .ecalendar-day--disabled,
+  .ramp.page-agenda .booking-calendar .ecalendar-day--pad {
+    min-height: 2.75rem;
+  }
+
+  /* Info compacta */
   .ramp.page-agenda .booking-side {
-    padding: 0.75rem 0.85rem;
+    padding: 0.65rem 0.75rem 1rem;
+    gap: 0.65rem;
+  }
+
+  .ramp.page-agenda .booking-title {
+    font-size: 1.125rem;
+  }
+
+  .ramp.page-agenda .booking-lede {
+    font-size: 0.8125rem;
+  }
+
+  .ramp.page-agenda .booking-steps {
+    display: none;
+  }
+
+  .ramp.page-agenda .booking-hours {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.5rem;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid #e8edf2;
+  }
+
+  .ramp.page-agenda .ecalendar-duration {
+    height: 44px;
+    font-size: 1rem;
+  }
+
+  /* Horarios — scroll horizontal con snap */
+  .ramp.page-agenda .booking-block--slots {
+    scroll-margin-top: 0.75rem;
   }
 
   .ramp.page-agenda .booking-side .ecalendar-slots {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.4rem;
     max-height: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.15rem 0 0.35rem;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  .ramp.page-agenda .booking-side .ecalendar-slots::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ramp.page-agenda .ecalendar-slot {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    min-height: 44px;
+    min-width: 4.75rem;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.8125rem;
+  }
+
+  .ramp.page-agenda .ecalendar-selected-time {
+    font-size: 0.8125rem;
+    padding: 0.45rem 0.6rem;
+  }
+
+  /* Formulario — inputs 16px evita zoom iOS */
+  .ramp.page-agenda .booking-data {
+    scroll-margin-top: 0.75rem;
+    padding-top: 0.65rem;
+  }
+
+  .ramp.page-agenda .ecalendar-field input,
+  .ramp.page-agenda .ecalendar-field select {
+    height: 44px;
+    font-size: 16px;
+  }
+
+  .ramp.page-agenda .booking-notes textarea {
+    font-size: 16px;
+    min-height: 4.5rem;
+  }
+
+  .ramp.page-agenda .ecalendar-submit {
+    height: 48px;
+    font-size: 0.9375rem;
+    position: sticky;
+    bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));
+    z-index: 2;
+  }
+
+  .ramp.page-agenda .booking-captcha {
+    max-height: none;
+    min-height: 44px;
+  }
+
+  .ramp.page-agenda .schedule-fallback-inline {
+    font-size: 0.6875rem;
+    text-align: center;
+  }
+
+  .ramp.page-agenda .booking-shell-foot {
+    font-size: 0.625rem;
+    padding: 0.45rem 0.65rem calc(0.45rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .ramp.page-agenda .site-footer {
+    display: none;
+  }
+
+  .ramp.page-agenda .ecalendar-success {
+    padding: 1.25rem 0.85rem calc(1rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .ramp.page-agenda .ecalendar-success-actions {
+    flex-direction: column;
+  }
+
+  .ramp.page-agenda .ecalendar-success-actions .btn {
+    width: 100%;
+    min-height: 48px;
   }
 }
