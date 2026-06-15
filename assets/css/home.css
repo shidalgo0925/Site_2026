@@ -1,126 +1,423 @@
-/* EasyTech — página de inicio (index.html). Requiere main.css + ramp-theme.css. */
+/* EasyTech — landing comercial (index.html). Requiere main.css + ramp-theme.css. */
 
-/* Hero: CTAs y pills en una sola fila */
-.ramp.page-home .hero-actions {
-  flex-wrap: nowrap;
-  gap: 0.65rem;
-}
-
-.ramp.page-home .hero-actions .btn {
-  flex: 0 1 auto;
-  white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 0.875rem;
-}
-
-.ramp.page-home .hero-pills {
-  flex-wrap: nowrap;
-  gap: 0.4rem;
+/* ── Hero comercial ── */
+.ramp.page-home .hero-title--commercial {
+  font-size: clamp(2.2rem, 3.5vw, 3.15rem);
+  line-height: 1.2;
   max-width: 100%;
 }
 
-.ramp.page-home .hero-pills a {
-  flex-shrink: 0;
+.ramp.page-home .hero-title--commercial .hero-title-line {
   white-space: nowrap;
 }
 
+.ramp.page-home .hero-eyebrow-eco {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.ramp.page-home .hero--commercial .hero-actions {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  width: auto;
+  max-width: none;
+  gap: 0.75rem;
+}
+
+.ramp.page-home .hero--commercial .hero-actions .btn {
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
+  box-sizing: border-box;
+}
+
 @media (min-width: 900px) {
-  .ramp.page-home .hero--ramp .hero-copy {
-    max-width: min(32rem, 100%);
+  .ramp.page-home .hero--commercial .hero-inner {
+    grid-template-columns: minmax(0, 0.5fr) minmax(0, 0.5fr);
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: start;
+  }
+
+  .ramp.page-home .hero--commercial .hero-copy {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .ramp.page-home .hero--commercial .hero-visual {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .ramp.page-home .hero--commercial .hero-laptop-shell {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .ramp.page-home .hero--commercial .hero-laptop-bezel {
+    max-height: min(70vh, 580px);
   }
 }
 
-@media (max-width: 480px) {
-  .ramp.page-home .hero-actions {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .ramp.page-home .hero-pills {
-    flex-wrap: wrap;
-    justify-content: center;
+@media (min-width: 1280px) {
+  .ramp.page-home .hero-title--commercial {
+    font-size: clamp(2.35rem, 3.6vw, 3.4rem);
   }
 }
 
-.ramp.page-home #ecosistema.value-pillars {
-  padding-top: clamp(0.75rem, 2vw, 1.25rem);
+.ramp.page-home .hero--commercial .hero-laptop-screen img {
+  object-fit: contain;
+  object-position: top center;
+  background: #f1f5f9;
 }
 
-.ramp.page-home #ecosistema.value-pillars .section-title {
-  margin-top: 0;
+/* ── Métricas ── */
+.ramp.page-home .home-metrics {
+  padding-top: 0;
+  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.ramp.page-home .ecosystem-category {
+.ramp.page-home .home-metrics-grid {
+  display: grid;
+  gap: 0.75rem;
   max-width: 1180px;
-  margin: 0 auto 1.75rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  grid-template-columns: 1fr;
 }
 
-.ramp.page-home .ecosystem-category:last-child {
-  margin-bottom: 0;
+@media (min-width: 640px) {
+  .ramp.page-home .home-metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-.ramp.page-home .ecosystem-category-title {
-  margin: 0 0 1.25rem;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+@media (min-width: 1024px) {
+  .ramp.page-home .home-metrics-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.ramp.page-home .home-metric-card {
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.ramp.page-home .home-metric-value {
+  margin: 0 0 0.2rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #102a43;
+}
+
+.ramp.page-home .home-metric-label {
+  margin: 0 0 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.ramp.page-home .home-metric-desc {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
   color: #64748b;
 }
 
-.ramp.page-home #cta.cta {
-  border-top: 1px solid #e5e7eb;
-  background: #f8fafc;
+/* ── Soluciones ── */
+.ramp.page-home .home-solutions {
+  background: #fff;
 }
 
-.ramp.page-home .section.thirty-days {
-  padding-top: clamp(0.75rem, 2vw, 1.25rem);
+.ramp.page-home .home-solutions-grid {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 1180px;
+  margin: 0 auto;
+  grid-template-columns: 1fr;
 }
 
-.ramp.page-home .thirty-days .section-title {
-  margin-top: 0;
-}
-
-.ramp.page-home .thirty-days-eyebrow {
-  margin-top: 0;
-  margin-bottom: 0.45rem;
-}
-
-.ramp.page-home .section.company-scale {
-  padding-top: clamp(0.75rem, 2vw, 1.25rem);
-}
-
-.ramp.page-home .company-scale-eyebrow {
-  margin-top: 0;
-}
-
-.ramp.page-home .company-scale .section-title {
-  margin-top: 0;
-}
-
-@media (min-width: 1100px) {
-  .ramp.page-home .value-pillars-grid--duo {
-    grid-template-columns: repeat(2, 1fr);
+@media (min-width: 640px) {
+  .ramp.page-home .home-solutions-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-/* Tarjetas comerciales (flyers landscape) en catálogo home */
-.ramp.page-home .value-card--tarjeta .value-card-visual {
+@media (min-width: 1100px) {
+  .ramp.page-home .home-solutions-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.ramp.page-home .home-solution-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.25rem 1.2rem;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
+}
+
+.ramp.page-home .home-solution-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #102a43;
+}
+
+.ramp.page-home .home-solution-card p {
+  margin: 0 0 1rem;
+  flex: 1;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #64748b;
+}
+
+.ramp.page-home .home-solution-link {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.ramp.page-home .home-solution-link:hover {
+  text-decoration: underline;
+}
+
+/* ── Odoo + FE ── */
+.ramp.page-home .home-odoo-fe {
+  background: linear-gradient(180deg, #f0f6ff 0%, #f8fafc 100%);
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.ramp.page-home .home-odoo-fe-inner {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 1180px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .ramp.page-home .home-odoo-fe-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.ramp.page-home .home-odoo-fe .section-title {
+  text-align: left;
+  margin-top: 0;
+}
+
+.ramp.page-home .home-odoo-fe .pillars-lede {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.ramp.page-home .home-odoo-fe-visual {
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 24px rgba(16, 42, 67, 0.08);
+}
+
+.ramp.page-home .home-odoo-fe-visual img {
   display: block;
-  padding: 0;
+  width: 100%;
+  height: auto;
+}
+
+/* ── Ecosistema ── */
+.ramp.page-home .home-ecosystem {
   background: #fff;
-  aspect-ratio: 3 / 2;
-  min-height: 12rem;
+}
+
+.ramp.page-home .home-eco-grid {
+  display: grid;
+  gap: 1rem;
+  max-width: 1180px;
+  margin: 0 auto;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .ramp.page-home .home-eco-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .ramp.page-home .home-eco-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.ramp.page-home .home-eco-card {
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
   overflow: hidden;
 }
 
-.ramp.page-home .value-card--tarjeta .value-card-visual img {
+.ramp.page-home .home-eco-card-link {
   display: block;
-  width: 100%;
+  padding: 1.15rem 1.2rem;
+  text-decoration: none;
+  color: inherit;
   height: 100%;
-  max-width: none;
-  max-height: none;
-  object-fit: cover;
-  object-position: top center;
+}
+
+.ramp.page-home .home-eco-card-link:hover {
+  background: #fff;
+}
+
+.ramp.page-home .home-eco-card-logo {
+  margin-bottom: 0.65rem;
+  border-radius: 8px;
+}
+
+.ramp.page-home .home-eco-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #102a43;
+}
+
+.ramp.page-home .home-eco-card p {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+/* ── Casos ── */
+.ramp.page-home .home-cases {
+  background: #f8fafc;
+  border-top: 1px solid #e5e7eb;
+}
+
+.ramp.page-home .home-cases-grid {
+  display: grid;
+  gap: 1rem;
+  max-width: 1180px;
+  margin: 0 auto;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .ramp.page-home .home-cases-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .ramp.page-home .home-cases-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.ramp.page-home .home-case-card {
+  padding: 1.15rem 1.2rem;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+}
+
+.ramp.page-home .home-case-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #102a43;
+}
+
+.ramp.page-home .home-case-card p {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: #64748b;
+}
+
+/* ── Metodología ── */
+.ramp.page-home .home-method {
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+}
+
+.ramp.page-home .home-method-timeline {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.ramp.page-home .home-method-step {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding-bottom: 1.25rem;
+  position: relative;
+}
+
+.ramp.page-home .home-method-step:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 1.125rem;
+  top: 2.5rem;
+  bottom: 0;
+  width: 2px;
+  background: #e5e7eb;
+}
+
+.ramp.page-home .home-method-num {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.ramp.page-home .home-method-body h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #102a43;
+}
+
+.ramp.page-home .home-method-body p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+/* ── CTA final ── */
+.ramp.page-home #cta.home-cta-final {
+  border-top: 1px solid #e5e7eb;
+  background: linear-gradient(180deg, #102a43 0%, #0d2238 100%);
+  color: #fff;
+}
+
+.ramp.page-home #cta.home-cta-final h2,
+.ramp.page-home #cta.home-cta-final p {
+  color: #fff;
+}
+
+.ramp.page-home #cta.home-cta-final p {
+  opacity: 0.92;
 }

@@ -156,6 +156,12 @@ body.ramp #page-main {
   color: #92400e;
 }
 
+.ramp .product-pilot-badge {
+  background: rgba(243, 112, 33, 0.12);
+  color: #c2410c;
+  border: 1px solid rgba(243, 112, 33, 0.35);
+}
+
 .ramp .hero-eyebrow {
   margin: 0 0 0.65rem;
   font-size: 0.8125rem;
@@ -238,19 +244,20 @@ body.ramp #page-main {
 
 .ramp .header-cta {
   border: none;
-  background: #e2ff6f;
-  color: #0a0a0a;
+  background: #102a43;
+  color: #fff;
   font-weight: 700;
   padding: 0.5rem 1.1rem;
   box-shadow: none;
 }
 
 .ramp .header-cta:hover {
-  background: #d4f34d;
+  background: #0d2238;
   border-color: transparent;
-  box-shadow: 0 6px 20px rgba(226, 255, 111, 0.35);
+  box-shadow: 0 6px 20px rgba(16, 42, 67, 0.25);
   transform: translateY(-1px);
   opacity: 1;
+  color: #fff;
 }
 
 @media (max-width: 900px) {
@@ -5172,7 +5179,7 @@ body.ramp #page-main {
 
 @media (min-width: 1100px) {
   .ramp.page-eposone .epo-pricing-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -5292,6 +5299,127 @@ body.ramp #page-main {
   text-align: center;
   font-size: 0.8125rem;
   line-height: 1.55;
+  color: #64748b;
+}
+
+.ramp.page-eposone .epo-pilot-badge {
+  background: rgba(243, 112, 33, 0.12);
+  color: #c2410c;
+  border: 1px solid rgba(243, 112, 33, 0.35);
+}
+
+.ramp.page-eposone .epo-status {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.ramp.page-eposone .epo-status--live {
+  background: rgba(34, 197, 94, 0.15);
+  color: #15803d;
+}
+
+.ramp.page-eposone .epo-status--rollout {
+  background: rgba(243, 112, 33, 0.15);
+  color: #c2410c;
+}
+
+.ramp.page-eposone .epo-status--planned {
+  background: rgba(100, 116, 139, 0.15);
+  color: #475569;
+}
+
+.ramp.page-eposone .epo-roadmap {
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+}
+
+.ramp.page-eposone .epo-roadmap-eyebrow {
+  margin: 0 auto 0.5rem;
+  max-width: 1180px;
+  text-align: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #f37021;
+}
+
+.ramp.page-eposone .epo-roadmap-phases {
+  max-width: 960px;
+  margin: 1.25rem auto 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.ramp.page-eposone .epo-roadmap-phases li {
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+}
+
+.ramp.page-eposone .epo-roadmap-phases strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: #1a3a5c;
+  font-size: 0.9rem;
+}
+
+.ramp.page-eposone .epo-roadmap-phases span {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: #64748b;
+}
+
+.ramp.page-eposone .epo-roadmap-rule {
+  max-width: 52rem;
+  margin: 1.5rem auto 0;
+  padding: 1.15rem 1.35rem;
+  border-radius: 14px;
+  border-left: 4px solid #f37021;
+  background: rgba(243, 112, 33, 0.08);
+}
+
+.ramp.page-eposone .epo-roadmap-rule p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #1a3a5c;
+}
+
+.ramp.page-eposone .epo-pilot {
+  background: #f8fafc;
+  border-top: 1px solid #e5e7eb;
+}
+
+.ramp.page-eposone .epo-pilot-card {
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(26, 58, 92, 0.06);
+}
+
+.ramp.page-eposone .epo-pilot-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a3a5c;
+}
+
+.ramp.page-eposone .epo-pilot-card p {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
   color: #64748b;
 }
 
@@ -6282,6 +6410,66 @@ body.ramp #page-main {
 .ramp.page-epayroll .epr-integrations {
   background: #fff;
   border-top: 1px solid #e5e7eb;
+}
+
+.ramp.page-epayroll .epr-roadmap {
+  background: #f8fafc;
+  border-top: 1px solid #e5e7eb;
+}
+
+.ramp.page-epayroll .epr-roadmap-eyebrow {
+  margin: 0 auto 0.5rem;
+  max-width: 1180px;
+  text-align: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--epr-teal);
+}
+
+.ramp.page-epayroll .epr-roadmap-panel {
+  max-width: 960px;
+  margin: 1.25rem auto 0;
+  padding: 1.25rem 1.35rem;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 32, 96, 0.06);
+}
+
+.ramp.page-epayroll .epr-roadmap-list {
+  display: grid;
+  gap: 0.35rem 1.5rem;
+  margin: 0;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+  .ramp.page-epayroll .epr-roadmap-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.ramp.page-epayroll .epr-roadmap-diff {
+  max-width: 52rem;
+  margin: 1.5rem auto 0;
+  padding: 1.15rem 1.35rem;
+  border-radius: 14px;
+  border-left: 4px solid var(--epr-teal);
+  background: var(--epr-teal-soft);
+  box-shadow: 0 1px 3px rgba(0, 32, 96, 0.06);
+}
+
+.ramp.page-epayroll .epr-roadmap-diff p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--epr-navy);
+}
+
+.ramp.page-epayroll .epr-roadmap-diff strong {
+  color: var(--epr-teal-dark);
 }
 
 .ramp.page-epayroll .epr-cta {
