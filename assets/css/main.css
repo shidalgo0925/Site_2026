@@ -2137,12 +2137,29 @@ a:hover {
   letter-spacing: 0.08em;
 }
 
-.site-footer-copy {
+.site-footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem 1rem;
   max-width: 1180px;
-  margin: 1.4rem auto 0;
-  padding-top: 0.95rem;
+  margin: 1.15rem auto 0;
+  padding-top: 0.85rem;
   border-top: 1px solid var(--line);
   font-size: 0.78rem;
+}
+
+.site-footer-legal a {
+  font-weight: 500;
+}
+
+.site-footer-copy {
+  max-width: 1180px;
+  margin: 0.75rem auto 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.78rem;
+  text-align: center;
 }
 
 @media (min-width: 860px) {

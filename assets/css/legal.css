@@ -1,0 +1,69 @@
+/* Páginas legales — privacidad.html, terminos.html */
+
+.ramp.page-legal .page-surface--legal {
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.ramp.page-legal .legal-page {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 0 var(--section-x, 1.25rem);
+}
+
+.ramp.page-legal .legal-page h1 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.5rem, 4vw, 1.85rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text, #0f172a);
+}
+
+.ramp.page-legal .legal-page .legal-updated {
+  margin: 0 0 1.25rem;
+  font-size: 0.8125rem;
+  color: var(--muted, #64748b);
+}
+
+.ramp.page-legal .legal-page .legal-lede {
+  margin: 0 0 1.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--muted, #475569);
+}
+
+.ramp.page-legal .legal-page section {
+  margin-bottom: 1.35rem;
+}
+
+.ramp.page-legal .legal-page h2 {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text, #0f172a);
+}
+
+.ramp.page-legal .legal-page p,
+.ramp.page-legal .legal-page li {
+  margin: 0 0 0.55rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--text, #334155);
+}
+
+.ramp.page-legal .legal-page ul {
+  margin: 0 0 0.55rem;
+  padding-left: 1.25rem;
+}
+
+.ramp.page-legal .legal-page a {
+  color: #00a85c;
+  font-weight: 500;
+}
+
+.ramp.page-legal .legal-page .legal-related {
+  margin-top: 1.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line, #e5e7eb);
+  font-size: 0.8125rem;
+}
