@@ -394,11 +394,44 @@
     );
   }
 
+  function initCasesCarousel() {
+    document.querySelectorAll("[data-cases-carousel]").forEach(function (root) {
+      if (root.dataset.casesBound === "1") return;
+
+      var track = root.querySelector(".home-cases-track");
+      if (!track) return;
+
+      var cards = Array.from(track.querySelectorAll(".home-case-card"));
+      if (!cards.length) return;
+
+      root.dataset.casesBound = "1";
+
+      var setA = document.createElement("div");
+      setA.className = "home-cases-set";
+      var setB = document.createElement("div");
+      setB.className = "home-cases-set";
+      setB.setAttribute("aria-hidden", "true");
+
+      cards.forEach(function (card) {
+        setA.appendChild(card);
+      });
+      cards.forEach(function (card) {
+        setB.appendChild(card.cloneNode(true));
+      });
+
+      track.replaceChildren(setA, setB);
+      if (!prefersReduced) {
+        track.classList.add("home-cases-track--loop");
+      }
+    });
+  }
+
   window.reinitPage = function () {
     bindDemoImagesIn(document.getElementById("page-main"));
     initScheduleEmbed();
     initRevealObserver();
     initDemoStack();
+    initCasesCarousel();
   };
 
   window.bootEasyTechPage = function () {
@@ -411,6 +444,7 @@
     initRevealObserver();
     initDemoStack();
     initNavDropdowns();
+    initCasesCarousel();
   };
 
   window.bootEasyTechPage();
