@@ -40,7 +40,7 @@ Alinear el sitio web con la visión comercial actual:
 |-----------|---------|
 | Reutilizar | HTML, CSS actual, JS (`main.js`, `page-transitions.js`), capturas, branding EasyTech |
 | Ecosistema primero | La navegación vende el ecosistema EasyTech, no productos aislados |
-| Captación real | WhatsApp, agenda en línea, registro en portal del producto, email — **sin formularios HTML nuevos** por ahora |
+| Captación real | WhatsApp, agenda ECalendar (`agenda.html`), registro en portal del producto, email; Turnstile en formularios |
 | Mantenibilidad | Header y footer compartidos **antes** de ampliar el menú |
 | CRM después | Mapa CTA primero; integración CRM en fase posterior |
 | Sin push sin revisión | Cambios productivos validados antes de publicar |
@@ -133,7 +133,7 @@ Servicios profesionales (Desarrollo, Consultoría) se publican cuando haya copy 
 | `soluciones.html` | ERP EasyTech | **Easy Odoo** (renombrar o redirigir) |
 | `econverso.html` | Easy Converso | Mantener; alinear naming “Easy Converso” |
 | `easynodeone.html` | EasyNodeOne | Mantener |
-| `agenda.html` | Agenda en línea | Mantener |
+| `agenda.html` | ECalendar V1 (booking 2 columnas) | ✅ UI en sitio; ⏳ API EN1 + Google Calendar |
 | `contacto.html` | Hub de contacto parcial | Hub de captación del ecosistema |
 
 ### Crear o completar
@@ -184,18 +184,30 @@ La fase CRM **no** forma parte de los sprints 1–6 del sitio estático.
 
 ---
 
-## Captación (sin formularios HTML por ahora)
+## Captación
 
 Canales reales del sitio:
 
 | Canal | Implementación actual |
 |-------|------------------------|
 | WhatsApp | `wa.me/50766884938` con texto prellenado por producto |
-| Agenda | `agenda.html` + `assets/js/calendly-config.js` |
+| Agenda | **`agenda.html` + ECalendar** (`assets/js/ecalendar*.js`, `ecalendar.css`); modo demo (`mockMode`) hasta EN1 |
 | Registro | Portal de registro de cada plataforma EasyTech (Easy Converso, EasyNodeOne, etc.) |
 | Email | `mailto:easytechservices25@gmail.com` |
+| Anti-spam | Cloudflare Turnstile (`site-captcha.js`) en formularios del sitio |
 
 Mapa detallado: **`docs/MAPA_CTA.md`**.
+
+**ECalendar — estado jun 2026**
+
+| Fase | Estado | Notas |
+|------|--------|-------|
+| Landing UI (`agenda.html`) | ✅ Hecho | Layout 30% flujo \| 70% calendario; fecha, hora, datos, confirmación correo, captcha |
+| API EN1 `/api/ecalendar/*` | ⏳ Pendiente | Ver `docs/INSTRUCCION_ECALENDAR_EN1_APPDEV.md` |
+| Google Calendar (`easytechservices25@gmail.com`) | ⏳ Pendiente | Solo vía backend EN1 |
+| CRM / leads desde agenda | ⏳ Fase posterior | V2 |
+
+Calendly **deprecado** en `agenda.html`. Config legacy: `assets/js/calendly-config.js` (sin uso en agenda).
 
 ---
 
@@ -246,7 +258,18 @@ Opciones aceptables (ver análisis en `docs/ANALISIS_LANDING_EASYTECH.md`):
 - Actualizar footer acorde al catálogo  
 - Unificar nomenclatura (“Easy Converso”, “Easy Odoo”, “EasyTech Ecosystem”)
 
+**Estado:** ✅ mayormente completado (jun 2026).
+
 ---
+
+### Sprint 3b — ECalendar landing (agenda)
+
+- Reemplazar Calendly por UI propia en `agenda.html`  
+- Layout booking 2 columnas: flujo izquierda \| calendario derecha  
+- Validación correo, Turnstile, productos del ecosistema  
+- Modo demo hasta conectar EN1
+
+**Estado:** ✅ completado (jun 2026). **Siguiente:** backend EN1 según `docs/INSTRUCCION_ECALENDAR_EN1_APPDEV.md`.
 
 ### Sprint 4 — Prioridades comerciales 1 y 2
 
@@ -285,7 +308,7 @@ Opciones aceptables (ver análisis en `docs/ANALISIS_LANDING_EASYTECH.md`):
 - No cambiar el stack (HTML + CSS + JS vanilla)  
 - No eliminar páginas existentes  
 - No rediseño global sin aprobación  
-- No formularios HTML nuevos hasta decisión explícita  
+- Formulario HTML **solo** en `agenda.html` (ECalendar); resto del sitio sin forms nuevos  
 - No conectar CRM/IA en sprints 1–6  
 - No push a producción sin revisión
 
@@ -298,6 +321,8 @@ Opciones aceptables (ver análisis en `docs/ANALISIS_LANDING_EASYTECH.md`):
 | `docs/ROADMAP_LANDING_EASYTECH_2026.md` | Este roadmap (versión candidata) |
 | `docs/ANALISIS_LANDING_EASYTECH.md` | Diagnóstico técnico y propuesta de implementación |
 | `docs/MAPA_CTA.md` | Producto → destino de captación |
+| `docs/PROPUESTA_TECNICA_ECALENDAR_V1.md` | Propuesta ECalendar (Google Calendar, flujo) |
+| `docs/INSTRUCCION_ECALENDAR_EN1_APPDEV.md` | Implementación API ECalendar en EN1 |
 
 ---
 

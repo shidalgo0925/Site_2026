@@ -432,6 +432,7 @@
     initRevealObserver();
     initDemoStack();
     initCasesCarousel();
+    if (window.EasyTechSiteCaptcha) window.EasyTechSiteCaptcha.boot(document);
   };
 
   window.bootEasyTechPage = function () {
@@ -445,6 +446,7 @@
     initDemoStack();
     initNavDropdowns();
     initCasesCarousel();
+    if (window.EasyTechSiteCaptcha) window.EasyTechSiteCaptcha.boot(document);
   };
 
   window.bootEasyTechPage();

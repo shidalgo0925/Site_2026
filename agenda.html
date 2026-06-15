@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Agenda tu cita con EasyTech (Calendly): elige fecha y hora para demo o reunión. Cuenta easytechservices25@gmail.com.">
+  <meta name="description" content="Agenda tu cita con EasyTech Ecosystem: elige fecha, hora y producto de interés. Confirmación por correo. Horario laboral Lun–Vie.">
   <title>Agenda tu cita — EasyTech</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/ramp-theme.css">
+  <link rel="stylesheet" href="assets/css/ecalendar.css">
 </head>
 <body class="ramp page-agenda">
   <header class="site-header site-header--ramp">
@@ -130,50 +131,106 @@
     </div>
   </header>
 
-  <main id="page-main" class="page-surface">
-    <section id="agenda" class="section section--tight schedule schedule--solo schedule--split" aria-labelledby="schedule-heading">
-      <div class="schedule-layout">
-        <div class="schedule-copy">
-          <h1 id="schedule-heading" class="section-title reveal">Calendario de reservas</h1>
-          <p class="schedule-lede reveal">Elegí fecha y hora en el calendario. Vas a recibir un <strong>correo de confirmación</strong> con el enlace de la reunión; si hace falta aprobación manual, te avisamos por el mismo canal.</p>
-          <ol class="schedule-steps reveal" aria-label="Qué ocurre después de reservar">
-            <li>Completás el formulario con tu correo y datos.</li>
-            <li>Recibís la confirmación (y recordatorios si el sistema los envía).</li>
-            <li>Esperás el día acordado o reprogramás desde el correo.</li>
-          </ol>
-          <p class="schedule-external reveal"><a class="schedule-external-link js-calendly-public-link" href="https://calendly.com/easytechservices25/30min" target="_blank" rel="noopener noreferrer">Abrir Calendly en una pestaña nueva</a></p>
-        </div>
-        <div class="schedule-calendar-col">
-          <div
-            class="schedule-shell schedule-shell--fallback"
-            id="schedule-shell"
-            data-calendly-url=""
-          >
-            <div class="schedule-calendly-loading" id="schedule-calendly-loading" role="status" aria-live="polite" aria-busy="false">
-              <span class="schedule-calendly-loading-spinner" aria-hidden="true"></span>
-              <span class="schedule-calendly-loading-text">Cargando calendario…</span>
+  <main id="page-main" class="page-surface page-surface--booking">
+    <section id="agenda" class="section schedule schedule--booking" aria-labelledby="schedule-heading">
+      <div class="ecalendar-shell booking-shell" id="ecalendar-app" data-ecalendar-app>
+        <div class="ecalendar-panel booking-panel" data-ecal-panel>
+          <aside class="booking-side">
+            <div class="booking-info-head">
+              <p class="ecalendar-mock-badge" id="ecal-mock-badge" hidden>Vista previa — EN1 pendiente</p>
+              <h1 id="schedule-heading" class="booking-title">Agenda tu diagnóstico</h1>
+              <p class="booking-lede">Seleccioná fecha y hora para revisar tu empresa y encontrar la mejor solución EasyTech.</p>
+              <ol class="booking-steps" aria-label="Pasos para reservar">
+                <li>Elegí fecha y hora.</li>
+                <li>Completá tus datos.</li>
+                <li>Recibí confirmación por correo.</li>
+              </ol>
+              <p class="booking-hours"><strong>Horario:</strong> Lun–Vie, 9:00–17:00</p>
             </div>
-            <div class="schedule-calendly-wrap" id="schedule-calendly-wrap" hidden aria-label="Calendario de reservas"></div>
-            <iframe
-              class="schedule-iframe"
-              title="Reservar cita con EasyTech"
-              src="about:blank"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              data-schedule-src=""
-            ></iframe>
-            <div class="schedule-fallback" role="status">
-              <p class="schedule-fallback-title">Calendario en línea</p>
-              <p class="schedule-fallback-text">Si el calendario no carga, revisá la URL del evento en <code>assets/js/calendly-config.js</code> (debe coincidir con Calendly → Event types → Share). Mientras tanto:</p>
-              <div class="schedule-fallback-actions">
-                <a href="mailto:easytechservices25@gmail.com?subject=Solicitud%20de%20cita%20EasyTech" class="btn btn-primary">Pedir cita por correo</a>
-                <a href="https://wa.me/50766884938?text=Hola%20EasyTech" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <div class="booking-block">
+              <label class="ecalendar-section-title" for="ecal-duration-wrap">Duración</label>
+              <select class="ecalendar-duration" data-ecal-duration id="ecal-duration-wrap" aria-label="Duración de la cita"></select>
+            </div>
+            <div class="booking-block booking-block--slots">
+              <p class="ecalendar-section-title">Horarios disponibles</p>
+              <p class="ecalendar-slots-hint" data-ecal-slots-hint>Elegí una fecha en el calendario.</p>
+              <div class="ecalendar-slots" data-ecal-slots role="group" aria-label="Horarios disponibles"></div>
+              <p class="ecalendar-selected-time" data-ecal-selected-time hidden aria-live="polite"></p>
+            </div>
+            <div class="booking-data">
+              <p class="ecalendar-section-title">Tus datos</p>
+              <div class="ecalendar-alert" data-ecal-alert hidden role="alert"></div>
+              <form class="ecalendar-form booking-form" data-ecal-form novalidate>
+                <div class="booking-form-stack">
+                  <div class="ecalendar-field">
+                    <label for="ecal-name">Nombre</label>
+                    <input id="ecal-name" name="name" type="text" autocomplete="name" required minlength="2">
+                  </div>
+                  <div class="ecalendar-field">
+                    <label for="ecal-company">Empresa</label>
+                    <input id="ecal-company" name="company" type="text" autocomplete="organization">
+                  </div>
+                  <div class="ecalendar-field">
+                    <label for="ecal-email">Correo</label>
+                    <input id="ecal-email" name="email" type="email" autocomplete="email" required>
+                  </div>
+                  <div class="ecalendar-field">
+                    <label for="ecal-email-confirm">Confirmar correo</label>
+                    <input id="ecal-email-confirm" name="email_confirm" type="email" autocomplete="off" required>
+                  </div>
+                  <div class="ecalendar-field">
+                    <label for="ecal-phone">Teléfono</label>
+                    <input id="ecal-phone" name="phone" type="tel" autocomplete="tel" required>
+                  </div>
+                  <div class="ecalendar-field">
+                    <label for="ecal-product">Servicio</label>
+                    <select id="ecal-product" name="product" required></select>
+                  </div>
+                  <details class="booking-notes">
+                    <summary>Notas <span class="booking-optional">(opcional)</span></summary>
+                    <textarea id="ecal-message" name="message" rows="2" placeholder="Breve descripción"></textarea>
+                  </details>
+                  <div class="ecalendar-field site-hp" aria-hidden="true">
+                    <label for="ecal-website">Sitio web</label>
+                    <input id="ecal-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                  </div>
+                </div>
+                <div class="site-captcha booking-captcha" data-site-captcha data-captcha-size="compact" aria-label="Verificación de seguridad"></div>
+                <button type="submit" class="btn btn-primary ecalendar-submit" data-ecal-submit>Confirmar cita</button>
+              </form>
+              <p class="schedule-fallback-inline">¿Problemas? <a href="mailto:easytechservices25@gmail.com?subject=Cita%20EasyTech">Correo</a> · <a href="https://wa.me/50766884938?text=Hola%20EasyTech" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+            </div>
+          </aside>
+          <div class="booking-calendar">
+            <div class="ecalendar-section ecalendar-section--flat">
+              <div class="ecalendar-month-nav">
+                <button type="button" class="ecalendar-month-btn" data-ecal-month-prev aria-label="Mes anterior">‹</button>
+                <p class="ecalendar-month-label" data-ecal-month-label aria-live="polite"></p>
+                <button type="button" class="ecalendar-month-btn" data-ecal-month-next aria-label="Mes siguiente">›</button>
               </div>
+              <div class="ecalendar-weekdays" aria-hidden="true">
+                <span class="ecalendar-weekday">Do</span>
+                <span class="ecalendar-weekday">Lu</span>
+                <span class="ecalendar-weekday">Ma</span>
+                <span class="ecalendar-weekday">Mi</span>
+                <span class="ecalendar-weekday">Ju</span>
+                <span class="ecalendar-weekday">Vi</span>
+                <span class="ecalendar-weekday">Sa</span>
+              </div>
+              <div class="ecalendar-days" data-ecal-days role="grid" aria-label="Días del mes"></div>
             </div>
           </div>
         </div>
+        <p class="booking-shell-foot">¿Cancelaciones? Enlace del correo o <a href="mailto:easytechservices25@gmail.com">easytechservices25@gmail.com</a></p>
+        <div class="ecalendar-success" data-ecal-success hidden>
+          <h2>Cita registrada</h2>
+          <p data-ecal-success-detail></p>
+          <div class="ecalendar-success-actions">
+            <a href="index.html" class="btn btn-ghost">Volver al inicio</a>
+            <a href="#" class="btn btn-primary" data-ecal-success-wa target="_blank" rel="noopener noreferrer">Confirmar por WhatsApp</a>
+          </div>
+        </div>
       </div>
-      <p class="schedule-note reveal"><span class="schedule-note-inner">¿Cancelaciones? Usá el enlace del correo de confirmación o escribinos a <a href="mailto:easytechservices25@gmail.com">easytechservices25@gmail.com</a>.</span></p>
     </section>
   </main>
 
@@ -216,12 +273,17 @@
     <p class="site-footer-copy">© <span id="y"></span> Easy Technology Services · Panamá · PH Camino de Cruces, Boulevard el Dorado, local 31</p>
   </footer>
 
-  <script src="assets/js/calendly-config.js"></script>
+  <script src="assets/js/site-captcha-config.js"></script>
+  <script src="assets/js/site-captcha.js"></script>
+  <script src="assets/js/portal-urls.js"></script>
+  <script src="assets/js/ecalendar-config.js"></script>
+  <script src="assets/js/ecalendar-products.js"></script>
+  <script src="assets/js/ecalendar.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      var u = window.EASYTECH_CALENDLY_EVENT_URL;
-      var el = document.querySelector(".js-calendly-public-link");
-      if (u && el) el.setAttribute("href", u);
+      var cfg = window.EASYTECH_ECALENDAR_CONFIG || {};
+      var badge = document.getElementById("ecal-mock-badge");
+      if (badge && cfg.mockMode) badge.hidden = false;
     });
   </script>
   <script src="assets/js/main.js"></script>
