@@ -493,33 +493,147 @@
   min-height: 2.5rem;
 }
 
-/* Éxito */
+/* Éxito — pantalla grande de confirmación */
+.ramp.page-agenda .booking-shell--confirmed .booking-panel,
+.ramp.page-agenda .booking-shell--confirmed .booking-shell-foot,
+.ramp.page-agenda .booking-shell--confirmed .booking-mobile-progress {
+  display: none !important;
+}
+
 .ramp.page-agenda .ecalendar-success {
-  padding: 1.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: min(72vh, 640px);
+  padding: 2rem 1.25rem;
   text-align: center;
+  background: linear-gradient(180deg, #f0fdf4 0%, #fff 42%);
 }
 
 .ramp.page-agenda .ecalendar-success[hidden] {
   display: none !important;
 }
 
-.ramp.page-agenda .ecalendar-success h2 {
+.ramp.page-agenda .ecalendar-success-card {
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 auto;
+}
+
+.ramp.page-agenda .ecalendar-success-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.5rem;
+  height: 5.5rem;
+  margin: 0 auto 1rem;
+  color: #059669;
+}
+
+.ramp.page-agenda .ecalendar-success-kicker {
   margin: 0 0 0.35rem;
-  font-size: 1.05rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #059669;
+}
+
+.ramp.page-agenda .ecalendar-success-title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.65rem, 5vw, 2.15rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
   color: #0f172a;
 }
 
-.ramp.page-agenda .ecalendar-success p {
-  margin: 0 0 0.75rem;
-  font-size: 0.8125rem;
+.ramp.page-agenda .ecalendar-success-lede {
+  margin: 0 auto 1.35rem;
+  max-width: 22rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
   color: #64748b;
+}
+
+.ramp.page-agenda .ecalendar-success-summary {
+  margin: 0 0 1.25rem;
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
+  text-align: left;
+}
+
+.ramp.page-agenda .ecalendar-success-row {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0.35rem 0.75rem;
+  align-items: baseline;
+  padding: 0.45rem 0;
+}
+
+.ramp.page-agenda .ecalendar-success-row + .ecalendar-success-row {
+  border-top: 1px solid #f1f5f9;
+}
+
+.ramp.page-agenda .ecalendar-success-row dt {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.ramp.page-agenda .ecalendar-success-row dd {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #0f172a;
+}
+
+.ramp.page-agenda .ecalendar-success-note {
+  margin: 0 0 1rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: #92400e;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+}
+
+.ramp.page-agenda .ecalendar-success-note[hidden] {
+  display: none !important;
 }
 
 .ramp.page-agenda .ecalendar-success-actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 0.65rem;
   justify-content: center;
+}
+
+.ramp.page-agenda .ecalendar-success-btn {
+  width: 100%;
+  min-height: 48px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+@media (min-width: 520px) {
+  .ramp.page-agenda .ecalendar-success-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .ramp.page-agenda .ecalendar-success-btn {
+    flex: 1 1 11rem;
+    width: auto;
+  }
 }
 
 /* Barra de progreso — solo móvil */
@@ -801,15 +915,21 @@
   }
 
   .ramp.page-agenda .ecalendar-success {
+    min-height: min(68vh, 560px);
     padding: 1.25rem 0.85rem calc(1rem + env(safe-area-inset-bottom, 0px));
   }
 
-  .ramp.page-agenda .ecalendar-success-actions {
-    flex-direction: column;
+  .ramp.page-agenda .ecalendar-success-icon {
+    width: 4.75rem;
+    height: 4.75rem;
   }
 
-  .ramp.page-agenda .ecalendar-success-actions .btn {
-    width: 100%;
-    min-height: 48px;
+  .ramp.page-agenda .ecalendar-success-row {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  .ramp.page-agenda .ecalendar-success-row dd {
+    font-size: 1.125rem;
   }
 }

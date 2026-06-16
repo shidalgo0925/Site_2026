@@ -108,6 +108,13 @@
     return datePart && time ? datePart + " · " + time : iso;
   }
 
+  function formatDateLong(dateStr) {
+    if (!dateStr) return "";
+    var d = parseDateStr(dateStr);
+    var days = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+    return days[d.getDay()] + " " + d.getDate() + " de " + MONTHS[d.getMonth()] + " de " + d.getFullYear();
+  }
+
   function getQueryProduct() {
     try {
       return new URLSearchParams(window.location.search).get("product") || "";
@@ -391,8 +398,14 @@
       submit: root.querySelector("[data-ecal-submit]"),
       alert: root.querySelector("[data-ecal-alert]"),
       success: root.querySelector("[data-ecal-success]"),
-      successDetail: root.querySelector("[data-ecal-success-detail]"),
+      successProduct: root.querySelector("[data-ecal-success-product]"),
+      successDate: root.querySelector("[data-ecal-success-date]"),
+      successTime: root.querySelector("[data-ecal-success-time]"),
+      successEventTitle: root.querySelector("[data-ecal-success-event-title]"),
+      successTitleRow: root.querySelector("[data-ecal-success-title-row]"),
+      successNote: root.querySelector("[data-ecal-success-note]"),
       successWa: root.querySelector("[data-ecal-success-wa]"),
+      shell: root.querySelector(".booking-shell"),
       panel: root.querySelector("[data-ecal-panel]"),
       slotsBlock: root.querySelector("[data-ecal-slots-block]"),
       dataBlock: root.querySelector(".booking-data"),
@@ -400,6 +413,42 @@
 
     function catalog() {
       return state.catalog.length ? state.catalog : staticProducts();
+    }
+
+    function showBookingSuccess(info) {
+      if (els.panel) els.panel.hidden = true;
+      if (els.shell) els.shell.classList.add("booking-shell--confirmed");
+      if (els.success) els.success.hidden = false;
+
+      if (els.successProduct) els.successProduct.textContent = info.product || "—";
+      if (els.successDate) els.successDate.textContent = info.dateLabel || info.date || "—";
+      if (els.successTime) {
+        els.successTime.textContent = info.time
+          ? info.time + (info.duration ? " (" + info.duration + " min)" : "")
+          : "—";
+      }
+      if (els.successEventTitle && els.successTitleRow) {
+        if (info.eventTitle) {
+          els.successEventTitle.textContent = info.eventTitle;
+          els.successTitleRow.hidden = false;
+        } else {
+          els.successTitleRow.hidden = true;
+        }
+      }
+      if (els.successNote) {
+        if (info.note) {
+          els.successNote.textContent = info.note;
+          els.successNote.hidden = false;
+        } else {
+          els.successNote.hidden = true;
+          els.successNote.textContent = "";
+        }
+      }
+      if (els.successWa) els.successWa.href = info.waUrl || "#";
+
+      if (els.success && els.success.scrollIntoView) {
+        els.success.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
     }
 
     function showAlert(msg, type) {
@@ -763,22 +812,15 @@
         submitBooking(payload)
           .then(function (res) {
             if (!usesApi() && res.mock) {
-              if (els.panel) els.panel.hidden = true;
-              if (els.success) els.success.hidden = false;
-              if (els.successDetail) {
-                els.successDetail.textContent =
-                  productLabel +
-                  " · " +
-                  state.selectedDate +
-                  " · " +
-                  state.selectedTime +
-                  " (" +
-                  state.duration +
-                  " min). Modo demo: la reserva se confirmará cuando EN1 esté conectado.";
-              }
-              if (els.successWa) {
-                els.successWa.href = buildWhatsAppUrl(productLabel, state.selectedDate, state.selectedTime);
-              }
+              showBookingSuccess({
+                product: productLabel,
+                date: state.selectedDate,
+                dateLabel: formatDateLong(state.selectedDate),
+                time: state.selectedTime,
+                duration: state.duration,
+                note: "Modo demo: la reserva se confirmará cuando EN1 esté conectado.",
+                waUrl: buildWhatsAppUrl(productLabel, state.selectedDate, state.selectedTime),
+              });
               return;
             }
             if (!res.ok) {
@@ -793,16 +835,15 @@
               return;
             }
             var body = res.body || {};
-            if (els.panel) els.panel.hidden = true;
-            if (els.success) els.success.hidden = false;
-            if (els.successDetail) {
-              var detail = body.title ? body.title + " · " : productLabel + " · ";
-              detail += formatSlotDisplay(body.slot_start || state.selectedSlotStart);
-              els.successDetail.textContent = detail;
-            }
-            if (els.successWa) {
-              els.successWa.href = buildWhatsAppUrl(productLabel, state.selectedDate, state.selectedTime);
-            }
+            showBookingSuccess({
+              product: productLabel,
+              date: state.selectedDate,
+              dateLabel: formatDateLong(state.selectedDate),
+              time: timeFromIso(body.slot_start || state.selectedSlotStart) || state.selectedTime,
+              duration: state.duration,
+              eventTitle: body.title || "",
+              waUrl: buildWhatsAppUrl(productLabel, state.selectedDate, state.selectedTime),
+            });
           })
           .catch(function () {
             showAlert("Error de conexión. Revisá tu red o contactanos por WhatsApp.", "error");

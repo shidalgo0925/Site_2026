@@ -229,12 +229,37 @@
           </div>
         </div>
         <p class="booking-shell-foot">¿Cancelaciones? Enlace del correo o <a href="mailto:easytechservices25@gmail.com">easytechservices25@gmail.com</a></p>
-        <div class="ecalendar-success" data-ecal-success hidden>
-          <h2>Cita registrada</h2>
-          <p data-ecal-success-detail></p>
-          <div class="ecalendar-success-actions">
-            <a href="index.html" class="btn btn-ghost">Volver al inicio</a>
-            <a href="#" class="btn btn-primary" data-ecal-success-wa target="_blank" rel="noopener noreferrer">Confirmar por WhatsApp</a>
+        <div class="ecalendar-success" data-ecal-success hidden role="status" aria-live="polite">
+          <div class="ecalendar-success-card">
+            <div class="ecalendar-success-icon" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="24" fill="currentColor" opacity="0.12"/><path d="M15 24.5l6 6 12-13" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <p class="ecalendar-success-kicker">¡Listo!</p>
+            <h2 class="ecalendar-success-title">Tu cita quedó confirmada</h2>
+            <p class="ecalendar-success-lede">Revisá tu correo con los detalles. Si no llega en unos minutos, revisá spam o escribinos.</p>
+            <dl class="ecalendar-success-summary">
+              <div class="ecalendar-success-row">
+                <dt>Servicio</dt>
+                <dd data-ecal-success-product>—</dd>
+              </div>
+              <div class="ecalendar-success-row">
+                <dt>Fecha</dt>
+                <dd data-ecal-success-date>—</dd>
+              </div>
+              <div class="ecalendar-success-row">
+                <dt>Hora</dt>
+                <dd data-ecal-success-time>—</dd>
+              </div>
+              <div class="ecalendar-success-row" data-ecal-success-title-row hidden>
+                <dt>Cita</dt>
+                <dd data-ecal-success-event-title>—</dd>
+              </div>
+            </dl>
+            <p class="ecalendar-success-note" data-ecal-success-note hidden></p>
+            <div class="ecalendar-success-actions">
+              <a href="index.html" class="btn btn-ghost ecalendar-success-btn">Volver al inicio</a>
+              <a href="#" class="btn btn-primary ecalendar-success-btn" data-ecal-success-wa target="_blank" rel="noopener noreferrer">Confirmar por WhatsApp</a>
+            </div>
           </div>
         </div>
       </div>
