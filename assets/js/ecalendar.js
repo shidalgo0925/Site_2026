@@ -26,8 +26,12 @@
     return "";
   }
 
+  function isMockMode() {
+    return !!cfg().mockMode;
+  }
+
   function usesApi() {
-    return !cfg().mockMode && !!apiBase();
+    return !isMockMode() && !!apiBase();
   }
 
   function pad(n) {
@@ -157,15 +161,27 @@
 
   function normalizeApiSlots(data) {
     if (!data || !Array.isArray(data.slots)) return [];
-    return data.slots.map(function (s) {
-      if (!s || !s.start) return null;
-      return {
-        time: timeFromIso(s.start),
-        available: true,
-        slot_start: s.start,
-        slot_end: s.end || "",
-      };
-    }).filter(Boolean);
+    var dateStr = data.date || "";
+    return data.slots
+      .map(function (s) {
+        if (typeof s === "string") {
+          return {
+            time: s,
+            available: true,
+            slot_start: dateStr + "T" + s + ":00-05:00",
+          };
+        }
+        if (!s || !s.start) return null;
+        var available = s.available !== false;
+        if (!available && !cfg().showUnavailableSlots) return null;
+        return {
+          time: timeFromIso(s.start),
+          available: available,
+          slot_start: s.start,
+          slot_end: s.end || "",
+        };
+      })
+      .filter(Boolean);
   }
 
   function fetchProductsFromApi() {
@@ -183,13 +199,16 @@
   }
 
   function fetchAvailability(dateStr, durationMin) {
-    if (!usesApi()) {
+    if (isMockMode()) {
       return Promise.resolve({
         date: dateStr,
         timezone: cfg().timezone || "America/Panama",
         slot_duration_minutes: durationMin,
         slots: generateMockSlots(dateStr, durationMin),
       });
+    }
+    if (!apiBase()) {
+      return Promise.reject(new Error("api_not_configured"));
     }
     var url = apiBase() + "/availability?date=" + encodeURIComponent(dateStr);
     return fetch(url, { credentials: "omit" })
@@ -318,9 +337,21 @@
     });
   }
 
-  function setMockBadgeVisible(visible) {
+  function setConnectionBadge(mode) {
     var badge = document.getElementById("ecal-mock-badge");
-    if (badge) badge.hidden = !visible;
+    if (!badge) return;
+    badge.classList.remove("ecalendar-live-badge");
+    if (mode === "mock") {
+      badge.textContent = "Modo demo — horarios no reales";
+      badge.hidden = false;
+    } else if (mode === "live") {
+      badge.textContent = "Agenda en vivo · Google Calendar";
+      badge.classList.add("ecalendar-live-badge");
+      badge.hidden = false;
+    } else {
+      badge.hidden = true;
+      badge.textContent = "";
+    }
   }
 
   function initApp(root) {
@@ -549,9 +580,16 @@
         .then(function (data) {
           state.slots = data.slots || [];
         })
-        .catch(function () {
+        .catch(function (err) {
           state.slots = [];
-          showAlert("No pudimos cargar los horarios. Intentá de nuevo o escribinos por WhatsApp.", "error");
+          if (err && err.message === "api_not_configured") {
+            showAlert(
+              "La agenda no está conectada a EN1. Subí portal-urls.js y ecalendar-config.js actualizados.",
+              "error"
+            );
+          } else {
+            showAlert("No pudimos cargar los horarios. Intentá de nuevo o escribinos por WhatsApp.", "error");
+          }
         })
         .finally(function () {
           state.loading = false;
@@ -561,8 +599,8 @@
     }
 
     function loadProducts() {
-      setMockBadgeVisible(cfg().mockMode);
-      if (!usesApi()) {
+      if (isMockMode()) {
+        setConnectionBadge("mock");
         populateProducts();
         return Promise.resolve();
       }
@@ -570,11 +608,12 @@
         .then(function (list) {
           state.catalog = list;
           populateProducts();
-          setMockBadgeVisible(false);
+          setConnectionBadge("live");
         })
         .catch(function () {
           state.catalog = staticProducts();
           populateProducts();
+          setConnectionBadge("hidden");
           showAlert("No pudimos cargar los servicios. Usamos el catálogo local.", "error");
         });
     }

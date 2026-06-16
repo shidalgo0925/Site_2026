@@ -4,7 +4,7 @@
  */
 window.EASYTECH_ECALENDAR_CONFIG = {
   mockMode: false,
-  apiBase: "",
+  apiBase: "https://appdev.easynodeone.com/api/ecalendar",
   timezone: "America/Panama",
   defaultDurationMinutes: 30,
   durationOptions: [30],

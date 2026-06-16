@@ -94,6 +94,12 @@
   display: none !important;
 }
 
+.ramp.page-agenda .ecalendar-mock-badge.ecalendar-live-badge {
+  color: #047857;
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+}
+
 .ramp.page-agenda .booking-title {
   margin: 0 0 0.3rem;
   font-size: 1.05rem;
