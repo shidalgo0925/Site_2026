@@ -191,7 +191,7 @@ Canales reales del sitio:
 | Canal | Implementación actual |
 |-------|------------------------|
 | WhatsApp | `wa.me/50766884938` con texto prellenado por producto |
-| Agenda | **`agenda.html` + ECalendar** (`assets/js/ecalendar*.js`, `ecalendar.css`); modo demo (`mockMode`) hasta EN1 |
+| Agenda | **`agenda.html` + ECalendar** (`assets/js/ecalendar*.js`, `ecalendar.css`); conectado a EN1 appdev (`mockMode: false`) |
 | Registro | Portal de registro de cada plataforma EasyTech (Easy Converso, EasyNodeOne, etc.) |
 | Email | `mailto:easytechservices25@gmail.com` |
 | Anti-spam | Cloudflare Turnstile (`site-captcha.js`) en formularios del sitio |
@@ -202,10 +202,13 @@ Mapa detallado: **`docs/MAPA_CTA.md`**.
 
 | Fase | Estado | Notas |
 |------|--------|-------|
-| Landing UI (`agenda.html`) | ✅ Hecho | Layout 30% flujo \| 70% calendario; fecha, hora, datos, confirmación correo, captcha |
-| API EN1 `/api/ecalendar/*` | ⏳ Pendiente | Ver `docs/INSTRUCCION_ECALENDAR_EN1_APPDEV.md` |
-| Google Calendar (`easytechservices25@gmail.com`) | ⏳ Pendiente | Solo vía backend EN1 |
-| CRM / leads desde agenda | ⏳ Fase posterior | V2 |
+| Landing UI (`agenda.html`) | ✅ Hecho | Layout 2 columnas + móvil; confirmación grande; badge «Agenda en vivo» |
+| API EN1 `/api/ecalendar/*` (V1) | 🔄 En curso | Sitio → `appdev`; cita directa + GCal vía EN1. Ver `docs/INSTRUCCION_ECALENDAR_EN1_APPDEV.md` |
+| Google Calendar (`easytechservices25@gmail.com`) | 🔄 En curso | Solo vía backend EN1 |
+| Páginas legales OAuth | ✅ Hecho | `privacidad.html`, `terminos.html` |
+| **ECalendar V2** (confirmación email + lead CRM) | ⏸ **Pausado** | **Hasta segunda orden.** Spec en `docs/INSTRUCCION_ECALENDAR_EN1_V2_CRM_EMAIL.md` — no implementar EN1 ni cambios web |
+
+**Decisión jun 2026:** continuar solo con **V1** (reserva inmediata). V2 queda documentada en roadmap como fase futura; no avanzar sin GO explícito.
 
 Calendly **deprecado** en `agenda.html`. Config legacy: `assets/js/calendly-config.js` (sin uso en agenda).
 
@@ -269,7 +272,9 @@ Opciones aceptables (ver análisis en `docs/ANALISIS_LANDING_EASYTECH.md`):
 - Validación correo, Turnstile, productos del ecosistema  
 - Modo demo hasta conectar EN1
 
-**Estado:** ✅ completado (jun 2026). **Siguiente:** backend EN1 según `docs/INSTRUCCION_ECALENDAR_EN1_APPDEV.md`.
+**Estado:** ✅ UI completada (jun 2026). **En curso:** QA V1 con EN1 appdev → appprd según `docs/INSTRUCCION_ECALENDAR_EN1_APPDEV.md`.
+
+**V2 (pausada):** confirmación por correo + lead CRM al reservar — ver tabla ECalendar arriba; **no iniciar** hasta nueva orden.
 
 ### Sprint 4 — Prioridades comerciales 1 y 2
 
@@ -322,7 +327,8 @@ Opciones aceptables (ver análisis en `docs/ANALISIS_LANDING_EASYTECH.md`):
 | `docs/ANALISIS_LANDING_EASYTECH.md` | Diagnóstico técnico y propuesta de implementación |
 | `docs/MAPA_CTA.md` | Producto → destino de captación |
 | `docs/PROPUESTA_TECNICA_ECALENDAR_V1.md` | Propuesta ECalendar (Google Calendar, flujo) |
-| `docs/INSTRUCCION_ECALENDAR_EN1_APPDEV.md` | Implementación API ECalendar en EN1 |
+| `docs/INSTRUCCION_ECALENDAR_EN1_APPDEV.md` | Implementación API ECalendar V1 en EN1 |
+| `docs/INSTRUCCION_ECALENDAR_EN1_V2_CRM_EMAIL.md` | Spec V2 (email + CRM) — **pausada hasta segunda orden** |
 
 ---
 
