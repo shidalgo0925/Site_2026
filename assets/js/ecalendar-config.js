@@ -1,13 +1,13 @@
 /**
  * ECalendar — configuración frontend (Site_2026).
- * Cuando EN1 esté listo: mockMode = false y apiBase apuntando a appdev/appprd.
+ * Cuando EN1 esté listo: mockMode = false y apiBase en portal-urls (appdev/appprd).
  */
 window.EASYTECH_ECALENDAR_CONFIG = {
-  mockMode: true,
+  mockMode: false,
   apiBase: "",
   timezone: "America/Panama",
   defaultDurationMinutes: 30,
-  durationOptions: [30, 45],
+  durationOptions: [30],
   showUnavailableSlots: false,
   leadTimeHours: 4,
   mockLeadTimeHours: 0,

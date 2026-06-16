@@ -9,13 +9,12 @@
     "enero", "febrero", "marzo", "abril", "mayo", "junio",
     "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
   ];
-  var WEEKDAYS = ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"];
 
   function cfg() {
     return window.EASYTECH_ECALENDAR_CONFIG || {};
   }
 
-  function products() {
+  function staticProducts() {
     return window.EASYTECH_ECALENDAR_PRODUCTS || [];
   }
 
@@ -25,6 +24,10 @@
     var portal = window.EASYTECH_PORTAL_URLS || {};
     if (portal.ecalendarApiBase) return portal.ecalendarApiBase.replace(/\/$/, "");
     return "";
+  }
+
+  function usesApi() {
+    return !cfg().mockMode && !!apiBase();
   }
 
   function pad(n) {
@@ -89,6 +92,18 @@
     return pad(Math.floor(m / 60)) + ":" + pad(m % 60);
   }
 
+  function timeFromIso(iso) {
+    if (!iso) return "";
+    var m = String(iso).match(/T(\d{2}):(\d{2})/);
+    return m ? m[1] + ":" + m[2] : "";
+  }
+
+  function formatSlotDisplay(iso) {
+    var time = timeFromIso(iso);
+    var datePart = String(iso).slice(0, 10);
+    return datePart && time ? datePart + " · " + time : iso;
+  }
+
   function getQueryProduct() {
     try {
       return new URLSearchParams(window.location.search).get("product") || "";
@@ -131,36 +146,44 @@
       var slotStart = new Date(d.getFullYear(), d.getMonth(), d.getDate(), Math.floor(t / 60), t % 60);
       var available = slotStart.getTime() >= now.getTime() + leadMs;
       if (available && mockBusySlot(dateStr, time)) available = false;
-      slots.push({ time: time, available: available });
+      slots.push({
+        time: time,
+        available: available,
+        slot_start: dateStr + "T" + time + ":00-05:00",
+      });
     }
     return slots;
   }
 
-  function normalizeSlots(data) {
-    if (!data) return [];
-    if (Array.isArray(data.slots) && data.slots.length && typeof data.slots[0] === "object") {
-      return data.slots;
-    }
-    if (Array.isArray(data.slots)) {
-      var all = generateMockSlots(data.date, data.slot_duration_minutes || cfg().defaultDurationMinutes || 30);
-      var set = {};
-      data.slots.forEach(function (t) {
-        set[t] = true;
-      });
-      if (!cfg().showUnavailableSlots) {
-        return data.slots.map(function (t) {
-          return { time: t, available: true };
+  function normalizeApiSlots(data) {
+    if (!data || !Array.isArray(data.slots)) return [];
+    return data.slots.map(function (s) {
+      if (!s || !s.start) return null;
+      return {
+        time: timeFromIso(s.start),
+        available: true,
+        slot_start: s.start,
+        slot_end: s.end || "",
+      };
+    }).filter(Boolean);
+  }
+
+  function fetchProductsFromApi() {
+    return fetch(apiBase() + "/products", { credentials: "omit" })
+      .then(function (r) {
+        if (!r.ok) throw new Error("products_error");
+        return r.json();
+      })
+      .then(function (data) {
+        if (!data.ok || !Array.isArray(data.products)) throw new Error("products_error");
+        return data.products.map(function (p) {
+          return { slug: p.id, label: p.name };
         });
-      }
-      return all.map(function (slot) {
-        return { time: slot.time, available: !!set[slot.time] };
       });
-    }
-    return [];
   }
 
   function fetchAvailability(dateStr, durationMin) {
-    if (cfg().mockMode || !apiBase()) {
+    if (!usesApi()) {
       return Promise.resolve({
         date: dateStr,
         timezone: cfg().timezone || "America/Panama",
@@ -168,29 +191,53 @@
         slots: generateMockSlots(dateStr, durationMin),
       });
     }
-    var url =
-      apiBase() +
-      "/availability?date=" +
-      encodeURIComponent(dateStr) +
-      "&duration=" +
-      encodeURIComponent(String(durationMin));
+    var url = apiBase() + "/availability?date=" + encodeURIComponent(dateStr);
     return fetch(url, { credentials: "omit" })
       .then(function (r) {
         if (!r.ok) throw new Error("availability_error");
         return r.json();
       })
       .then(function (data) {
+        if (!data.ok) throw new Error("availability_error");
         return {
           date: data.date,
           timezone: data.timezone,
-          slot_duration_minutes: data.slot_duration_minutes || durationMin,
-          slots: normalizeSlots(data),
+          slot_duration_minutes: cfg().defaultDurationMinutes || 30,
+          slots: normalizeApiSlots(data),
         };
       });
   }
 
+  function buildApiBookingPayload(state, fields) {
+    return {
+      product_id: fields.productId,
+      slot_start: state.selectedSlotStart,
+      name: fields.name,
+      email: fields.email,
+      phone: fields.phone,
+      company: fields.company,
+      notes: fields.notes,
+    };
+  }
+
+  function buildMockBookingPayload(state, fields) {
+    return {
+      product_slug: fields.productId,
+      duration_minutes: state.duration,
+      start_at: state.selectedSlotStart || state.selectedDate + "T" + state.selectedTime + ":00-05:00",
+      captcha_token: fields.captchaToken || "",
+      client: {
+        full_name: fields.name,
+        company: fields.company,
+        email: fields.email,
+        whatsapp: fields.phone,
+        notes: fields.notes,
+      },
+    };
+  }
+
   function submitBooking(payload) {
-    if (cfg().mockMode || !apiBase()) {
+    if (!usesApi()) {
       return Promise.resolve({
         ok: true,
         mock: true,
@@ -207,6 +254,18 @@
         return { ok: r.ok, status: r.status, body: body };
       });
     });
+  }
+
+  function apiErrorMessage(body) {
+    if (!body) return "No se pudo confirmar la cita. Intentá de nuevo.";
+    var code = body.error || body.message || "";
+    var map = {
+      slot_unavailable: "Ese horario ya no está disponible. Elegí otro.",
+      invalid_email: "Ingresá un correo válido.",
+      invalid_slot: "Elegí un horario válido.",
+      invalid_product: "Elegí un servicio válido.",
+    };
+    return map[code] || (typeof code === "string" && code ? code : "No se pudo confirmar la cita. Intentá de nuevo.");
   }
 
   function normalizeEmail(value) {
@@ -259,6 +318,11 @@
     });
   }
 
+  function setMockBadgeVisible(visible) {
+    var badge = document.getElementById("ecal-mock-badge");
+    if (badge) badge.hidden = !visible;
+  }
+
   function initApp(root) {
     if (!root || root.dataset.ecalendarReady === "1") return;
     root.dataset.ecalendarReady = "1";
@@ -267,9 +331,11 @@
       viewMonth: new Date(),
       selectedDate: "",
       selectedTime: "",
+      selectedSlotStart: "",
       duration: cfg().defaultDurationMinutes || 30,
       slots: [],
       loading: false,
+      catalog: [],
     };
 
     var els = {
@@ -301,6 +367,10 @@
       dataBlock: root.querySelector(".booking-data"),
     };
 
+    function catalog() {
+      return state.catalog.length ? state.catalog : staticProducts();
+    }
+
     function showAlert(msg, type) {
       if (!els.alert) return;
       els.alert.hidden = !msg;
@@ -312,11 +382,11 @@
       if (!els.product) return;
       var q = getQueryProduct();
       els.product.innerHTML = "";
-      products().forEach(function (p) {
+      catalog().forEach(function (p) {
         var opt = document.createElement("option");
         opt.value = p.slug;
         opt.textContent = p.label;
-        if (p.slug === q) opt.selected = true;
+        if (p.slug === q || p.slug.replace(/_/g, "-") === q) opt.selected = true;
         els.product.appendChild(opt);
       });
     }
@@ -356,6 +426,7 @@
         if (!isSelectableDay(sel)) {
           state.selectedDate = "";
           state.selectedTime = "";
+          state.selectedSlotStart = "";
           state.slots = [];
         }
       }
@@ -426,10 +497,12 @@
       if (!available.length) {
         if (els.slotsHint) {
           els.slotsHint.textContent =
-            "No quedan horarios libres este día. Probá otro día o cambiá la duración.";
+            "No quedan horarios libres este día. Probá otro día" +
+            (usesApi() ? "." : " o cambiá la duración.");
         }
         els.slots.innerHTML = "";
         state.selectedTime = "";
+        state.selectedSlotStart = "";
         updateSelectedTimeLabel();
         return;
       }
@@ -453,6 +526,8 @@
           cls +
           '" data-ecal-time="' +
           slot.time +
+          '" data-ecal-slot-start="' +
+          (slot.slot_start || "") +
           '"' +
           (slot.available ? "" : ' disabled aria-label="No disponible"') +
           ">" +
@@ -468,6 +543,7 @@
       if (!state.selectedDate) return;
       state.loading = true;
       state.selectedTime = "";
+      state.selectedSlotStart = "";
       renderSlots();
       fetchAvailability(state.selectedDate, state.duration)
         .then(function (data) {
@@ -484,11 +560,37 @@
         });
     }
 
-    populateProducts();
+    function loadProducts() {
+      setMockBadgeVisible(cfg().mockMode);
+      if (!usesApi()) {
+        populateProducts();
+        return Promise.resolve();
+      }
+      return fetchProductsFromApi()
+        .then(function (list) {
+          state.catalog = list;
+          populateProducts();
+          setMockBadgeVisible(false);
+        })
+        .catch(function () {
+          state.catalog = staticProducts();
+          populateProducts();
+          showAlert("No pudimos cargar los servicios. Usamos el catálogo local.", "error");
+        });
+    }
+
+    if (usesApi() && els.duration) {
+      var durationBlock = els.duration.closest(".booking-block");
+      if (durationBlock) durationBlock.hidden = true;
+      state.duration = cfg().defaultDurationMinutes || 30;
+    }
+
     populateDuration();
     renderMonth();
     renderSlots();
     updateMobileProgress(root, state);
+    loadProducts();
+
     var cap = siteCaptcha();
     if (cap && els.captchaMount) cap.mount(els.captchaMount);
 
@@ -499,6 +601,7 @@
         if (!isSelectableDay(picked)) return;
         state.selectedDate = dayBtn.getAttribute("data-date");
         state.selectedTime = "";
+        state.selectedSlotStart = "";
         renderMonth();
         loadSlots();
         showAlert("");
@@ -514,6 +617,7 @@
         e.preventDefault();
         e.stopPropagation();
         state.selectedTime = slotBtn.getAttribute("data-ecal-time");
+        state.selectedSlotStart = slotBtn.getAttribute("data-ecal-slot-start") || "";
         renderSlots();
         showAlert("");
         updateMobileProgress(root, state);
@@ -550,7 +654,7 @@
         e.preventDefault();
         showAlert("");
 
-        if (!state.selectedDate || !state.selectedTime) {
+        if (!state.selectedDate || !state.selectedTime || !state.selectedSlotStart) {
           showAlert("Elegí fecha y hora antes de confirmar.", "error");
           return;
         }
@@ -562,31 +666,27 @@
         var email = normalizeEmail(els.email && els.email.value);
         var emailConfirm = normalizeEmail(els.emailConfirm && els.emailConfirm.value);
 
-        var productSlug = els.product ? els.product.value : "";
-        var productLabel = productSlug;
-        products().forEach(function (p) {
-          if (p.slug === productSlug) productLabel = p.label;
+        var productId = els.product ? els.product.value : "";
+        var productLabel = productId;
+        catalog().forEach(function (p) {
+          if (p.slug === productId) productLabel = p.label;
         });
 
         var captchaCheck = { ok: true, token: "" };
         var capApi = siteCaptcha();
-        if (capApi) captchaCheck = capApi.validate(els.captchaMount);
+        if (!usesApi() && capApi) captchaCheck = capApi.validate(els.captchaMount);
 
-        var payload = {
-          product_slug: productSlug,
-          duration_minutes: state.duration,
-          start_at: state.selectedDate + "T" + state.selectedTime + ":00-05:00",
-          captcha_token: captchaCheck.token || "",
-          client: {
-            full_name: (els.name && els.name.value.trim()) || "",
-            company: (els.company && els.company.value.trim()) || "",
-            email: email,
-            whatsapp: (els.phone && els.phone.value.trim()) || "",
-            notes: (els.message && els.message.value.trim()) || "",
-          },
+        var fields = {
+          productId: productId,
+          name: (els.name && els.name.value.trim()) || "",
+          company: (els.company && els.company.value.trim()) || "",
+          email: email,
+          phone: (els.phone && els.phone.value.trim()) || "",
+          notes: (els.message && els.message.value.trim()) || "",
+          captchaToken: captchaCheck.token || "",
         };
 
-        if (payload.client.full_name.length < 2) {
+        if (fields.name.length < 2) {
           showAlert("Ingresá tu nombre.", "error");
           return;
         }
@@ -602,15 +702,19 @@
           showAlert("Los correos no coinciden. Revisalos e intentá de nuevo.", "error");
           return;
         }
-        if (!payload.client.whatsapp) {
+        if (!fields.phone) {
           showAlert("Ingresá tu teléfono o WhatsApp.", "error");
           return;
         }
 
-        if (!captchaCheck.ok) {
+        if (!usesApi() && !captchaCheck.ok) {
           showAlert(captchaCheck.message || "Completá la verificación de seguridad.", "error");
           return;
         }
+
+        var payload = usesApi()
+          ? buildApiBookingPayload(state, fields)
+          : buildMockBookingPayload(state, fields);
 
         if (els.submit) {
           els.submit.disabled = true;
@@ -619,7 +723,7 @@
 
         submitBooking(payload)
           .then(function (res) {
-            if (cfg().mockMode || res.mock) {
+            if (!usesApi() && res.mock) {
               if (els.panel) els.panel.hidden = true;
               if (els.success) els.success.hidden = false;
               if (els.successDetail) {
@@ -645,15 +749,17 @@
                 if (capApi) capApi.reset(els.captchaMount);
                 return;
               }
-              showAlert("No se pudo confirmar la cita. Intentá de nuevo.", "error");
+              showAlert(apiErrorMessage(res.body), "error");
               if (capApi) capApi.reset(els.captchaMount);
               return;
             }
+            var body = res.body || {};
             if (els.panel) els.panel.hidden = true;
             if (els.success) els.success.hidden = false;
             if (els.successDetail) {
-              els.successDetail.textContent =
-                productLabel + " · " + state.selectedDate + " · " + state.selectedTime;
+              var detail = body.title ? body.title + " · " : productLabel + " · ";
+              detail += formatSlotDisplay(body.slot_start || state.selectedSlotStart);
+              els.successDetail.textContent = detail;
             }
             if (els.successWa) {
               els.successWa.href = buildWhatsAppUrl(productLabel, state.selectedDate, state.selectedTime);

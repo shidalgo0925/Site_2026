@@ -11,5 +11,5 @@ window.EASYTECH_PORTAL_URLS = {
   email: "info@easytech.services",
   emailOperations: "easytechservices25@gmail.com",
   googleCalendarAccount: "easytechservices25@gmail.com",
-  ecalendarApiBase: "",
+  ecalendarApiBase: "https://appdev.easynodeone.com/api/ecalendar",
 };
