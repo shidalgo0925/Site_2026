@@ -13,6 +13,41 @@
     return fa === fb;
   }
 
+  function isHomePath(pathname) {
+    if (!pathname || pathname === "/") return true;
+    return /index\.html$/i.test(pathname);
+  }
+
+  function stylesheetKey(href) {
+    if (!href) return "";
+    try {
+      return new URL(href, window.location.href).pathname;
+    } catch (err) {
+      return href.split("?")[0];
+    }
+  }
+
+  function syncStylesheets(doc) {
+    var links = doc.querySelectorAll('head link[rel="stylesheet"]');
+    var loaded = {};
+    document.querySelectorAll('head link[rel="stylesheet"]').forEach(function (el) {
+      loaded[stylesheetKey(el.getAttribute("href"))] = true;
+    });
+
+    links.forEach(function (link) {
+      var href = link.getAttribute("href");
+      if (!href || href.indexOf("fonts.googleapis.com") !== -1) return;
+      if (href.indexOf("assets/") !== 0 && href.indexOf("/assets/") !== 0) return;
+      var key = stylesheetKey(href);
+      if (loaded[key]) return;
+      var el = document.createElement("link");
+      el.rel = "stylesheet";
+      el.href = href;
+      document.head.appendChild(el);
+      loaded[key] = true;
+    });
+  }
+
   function loadAndSwap(urlStr, isPop) {
     var fullUrl = new URL(urlStr, window.location.href);
     var fetchPath = fullUrl.pathname + fullUrl.search;
@@ -30,6 +65,8 @@
           window.location.href = fullUrl.href;
           return;
         }
+
+        syncStylesheets(doc);
 
         var swap = function () {
           cur.innerHTML = newMain.innerHTML;
@@ -88,6 +125,7 @@
 
     var path = url.pathname;
     if (/agenda\.html$/i.test(path)) return;
+    if (isHomePath(path)) return;
 
     if (!/\.html$/i.test(path) && path !== "/" && path !== "") return;
 

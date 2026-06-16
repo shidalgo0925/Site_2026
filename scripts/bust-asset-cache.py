@@ -5,16 +5,14 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "20260613"
-PAT = re.compile(r'((?:href|src)=")(assets/(?:css|js)/[^"?]+)(")')
+VERSION = "20260616"
+PAT = re.compile(r'((?:href|src)=")(assets/(?:css|js)/[^"?]+)(\?v=[^"]+)?(")')
 
 
 def bust(text: str) -> str:
     def repl(m: re.Match[str]) -> str:
         url = m.group(2)
-        if "?v=" in url:
-            return m.group(0)
-        return f'{m.group(1)}{url}?v={VERSION}{m.group(3)}'
+        return f'{m.group(1)}{url}?v={VERSION}{m.group(4)}'
 
     return PAT.sub(repl, text)
 
