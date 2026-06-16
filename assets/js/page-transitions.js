@@ -87,6 +87,8 @@
     if (url.origin !== window.location.origin) return;
 
     var path = url.pathname;
+    if (/agenda\.html$/i.test(path)) return;
+
     if (!/\.html$/i.test(path) && path !== "/" && path !== "") return;
 
     if (sameBasename(url.pathname, window.location.pathname) && url.hash) {

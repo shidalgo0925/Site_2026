@@ -48,165 +48,6 @@
     });
   }
 
-  /** Parámetros que Calendly usa para el iframe inline (ayuda al render completo). */
-  function withCalendlyEmbedParams(url) {
-    try {
-      var u = new URL(url, window.location.href);
-      if (!u.searchParams.has("embed_domain")) {
-        u.searchParams.set("embed_domain", window.location.hostname || "localhost");
-      }
-      if (!u.searchParams.has("embed_type")) {
-        u.searchParams.set("embed_type", "Inline");
-      }
-      return u.toString();
-    } catch (err) {
-      return url;
-    }
-  }
-
-  var scheduleLoaderTimeoutId = null;
-
-  function dismissScheduleLoader() {
-    var shell = document.getElementById("schedule-shell");
-    var loadingEl = document.getElementById("schedule-calendly-loading");
-    if (scheduleLoaderTimeoutId) {
-      clearTimeout(scheduleLoaderTimeoutId);
-      scheduleLoaderTimeoutId = null;
-    }
-    if (shell) shell.classList.remove("schedule-shell--loading");
-    if (loadingEl) loadingEl.setAttribute("aria-busy", "false");
-  }
-
-  function armScheduleLoader(shell) {
-    dismissScheduleLoader();
-    if (!shell) return;
-    var loadingEl = document.getElementById("schedule-calendly-loading");
-    shell.classList.add("schedule-shell--loading");
-    if (loadingEl) loadingEl.setAttribute("aria-busy", "true");
-    scheduleLoaderTimeoutId = setTimeout(function () {
-      dismissScheduleLoader();
-    }, 20000);
-  }
-
-  /** Calendly envía la altura real del iframe por postMessage; sin esto el área queda colapsada. */
-  var calendlyPageHeightBound = false;
-  function bindCalendlyPageHeightListener() {
-    if (calendlyPageHeightBound) return;
-    calendlyPageHeightBound = true;
-    window.addEventListener("message", function (e) {
-      if (e.origin !== "https://calendly.com") return;
-      var d = e.data;
-      if (!d || typeof d !== "object") return;
-      if (d.event === "calendly.profile_page_viewed") {
-        dismissScheduleLoader();
-        return;
-      }
-      if (d.event !== "calendly.page_height" || !d.payload) return;
-      var h = d.payload.height;
-      if (typeof h !== "number" || h < 320) return;
-      var wrap = document.getElementById("schedule-calendly-wrap");
-      if (!wrap || wrap.hasAttribute("hidden")) return;
-      var px = Math.ceil(h + 24);
-      wrap.style.minHeight = px + "px";
-      var inner = wrap.querySelector(".calendly-inline-widget");
-      if (inner) inner.style.minHeight = px + "px";
-      var calIframe = wrap.querySelector("iframe");
-      if (calIframe) {
-        calIframe.style.minHeight = Math.ceil(h) + "px";
-        calIframe.style.height = Math.ceil(h) + "px";
-      }
-      dismissScheduleLoader();
-    });
-  }
-
-  function initScheduleEmbed() {
-    var shell = document.getElementById("schedule-shell");
-    var iframe = document.querySelector(".schedule-iframe");
-    var calWrap = document.getElementById("schedule-calendly-wrap");
-    if (!shell) return;
-
-    dismissScheduleLoader();
-
-    if (calWrap) {
-      calWrap.innerHTML = "";
-      calWrap.setAttribute("hidden", "");
-    }
-    if (iframe) {
-      iframe.src = "about:blank";
-      iframe.style.display = "";
-    }
-    shell.classList.remove("schedule-shell--has-calendly");
-    shell.classList.add("schedule-shell--fallback");
-
-    var calUrl = (shell.getAttribute("data-calendly-url") || "").trim();
-    if (
-      !calUrl &&
-      typeof window.EASYTECH_CALENDLY_EVENT_URL === "string" &&
-      window.EASYTECH_CALENDLY_EVENT_URL.length > 0
-    ) {
-      calUrl = window.EASYTECH_CALENDLY_EVENT_URL.trim();
-    }
-    var calOk =
-      calUrl.length > 0 && /^https?:\/\/(www\.)?calendly\.com\/.+/i.test(calUrl);
-
-    function loadCalendlyScript(done) {
-      var existing = document.querySelector('script[data-calendly-loader="1"]');
-      if (existing) {
-        if (done) done();
-        return;
-      }
-      var s = document.createElement("script");
-      s.src = "https://assets.calendly.com/assets/external/widget.js";
-      s.async = true;
-      s.setAttribute("data-calendly-loader", "1");
-      s.onerror = function () {
-        dismissScheduleLoader();
-      };
-      s.onload = function () {
-        if (done) done();
-      };
-      document.body.appendChild(s);
-    }
-
-    function runCalendly() {
-      if (!calWrap || !window.Calendly || typeof window.Calendly.initInlineWidget !== "function") {
-        dismissScheduleLoader();
-        return;
-      }
-      bindCalendlyPageHeightListener();
-      calWrap.removeAttribute("hidden");
-      shell.classList.remove("schedule-shell--fallback");
-      shell.classList.add("schedule-shell--has-calendly");
-      if (iframe) iframe.style.display = "none";
-      calWrap.style.minHeight = "";
-      try {
-        window.Calendly.initInlineWidget({
-          url: withCalendlyEmbedParams(calUrl),
-          parentElement: calWrap,
-        });
-      } catch (err) {
-        dismissScheduleLoader();
-      }
-    }
-
-    if (calOk && calWrap) {
-      armScheduleLoader(shell);
-      loadCalendlyScript(function () {
-        runCalendly();
-      });
-      return;
-    }
-
-    if (iframe) {
-      var url = (iframe.getAttribute("data-schedule-src") || "").trim();
-      var valid = url.length > 0 && /^https?:\/\//i.test(url);
-      if (valid) {
-        shell.classList.remove("schedule-shell--fallback");
-        iframe.src = url;
-      }
-    }
-  }
-
   var revealIo = null;
 
   function initRevealObserver() {
@@ -427,12 +268,13 @@
   }
 
   window.reinitPage = function () {
+    applyNavCurrent();
     bindDemoImagesIn(document.getElementById("page-main"));
-    initScheduleEmbed();
     initRevealObserver();
     initDemoStack();
     initCasesCarousel();
     if (window.EasyTechSiteCaptcha) window.EasyTechSiteCaptcha.boot(document);
+    if (typeof window.initEasyTechECalendar === "function") window.initEasyTechECalendar();
   };
 
   window.bootEasyTechPage = function () {
@@ -440,13 +282,13 @@
     if (y) y.textContent = new Date().getFullYear();
 
     applyNavCurrent();
-    initScheduleEmbed();
     bindDemoImagesIn(document);
     initRevealObserver();
     initDemoStack();
     initNavDropdowns();
     initCasesCarousel();
     if (window.EasyTechSiteCaptcha) window.EasyTechSiteCaptcha.boot(document);
+    if (typeof window.initEasyTechECalendar === "function") window.initEasyTechECalendar();
   };
 
   window.bootEasyTechPage();

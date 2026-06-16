@@ -1,2 +1,12 @@
 # easytech.services — charset UTF-8 para HTML y texto
 AddDefaultCharset UTF-8
+
+# Evitar mezcla de versiones en caché tras deploy (HTML/JS/CSS)
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html?)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(js|css)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
